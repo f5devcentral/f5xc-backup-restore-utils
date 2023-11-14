@@ -76,12 +76,18 @@ In order to backup or restore, your API Key need to have sufficient priviledge t
 > F5XC Backup/Restore Utility Usage
 >
 > optional arguments:
+>
+>
 > -h, --help            show this help message and exit
 >
 > --action ACTION, -a ACTION
+>
+>
 >                            Desire Action - backup / restore
 >
 > --namespace NAMESPACE, -n NAMESPACE
+>
+>
 >                            Namespace - comma deliminated
 >
 > --version             show program's version number and exit
