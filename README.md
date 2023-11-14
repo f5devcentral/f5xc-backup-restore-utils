@@ -93,7 +93,9 @@ Sample output
 ![image](./assets/restore.png)
 
 Backup more than one namespace with comma deliminated
+
 ~ ./f5xc-backup-restore.py -a backup -n arcadia-trading,arcadia-demo
+
 ![image](./assets/backup2.png)
 
 **Troubleshooting**
@@ -106,7 +108,7 @@ Restore to new tenant
 ~ ./f5xc-backup-restore.py -a restore -n mcn
 ![image](./assets/restore-new-tenant.png)
 
-Restore return error code 400 for "web-ce-local.json". You can copy and paste content of web-ce-local.json and paste it into F5XC console to see the details of error.
+Restore return status/error code 400 for "web-ce-local.json". You can copy and paste content of web-ce-local.json and paste it into F5XC console to see the details of error.
 
 Clear content of the default JSON text.
 ![image](./assets/new-tenant-validate-error-code.png)
