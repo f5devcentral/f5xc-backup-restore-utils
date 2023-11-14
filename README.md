@@ -13,7 +13,7 @@ This script assist F5 Distributed Cloud (F5XC) administrator to simplify operati
 ##### Note:
 
 * Both functions above interact directly with F5XC Portal API GW.
-* For restore function, it only support creation of new objects. It does not update existing objects (e.g. PUT)) - "error code 409 - Conflict" will shown if object exist. Ensure objects are deleted before restore.
+* For restore function, it only support creation of new objects. It does not update existing objects (e.g. PUT) - "error code 409 - Conflict" will shown if object exist. Ensure objects are deleted before restore.
 * Backup file will be stored on a local folder based on namespace. Each configuration objects will prefix with object type as a filename.
 * Restoration will read from local folder based on namespace. Each respective configuration objects will be read based on object type filename.
 
@@ -86,7 +86,6 @@ Sample output
 
 ~ ./f5xc-backup-restore.py -a restore -n mcn
 ![image](./assets/restore.png)
-
 
 Backup more than one namespace with comma deliminated
 ~ ./f5xc-backup-restore.py -a backup -n arcadia-trading,arcadia-demo
