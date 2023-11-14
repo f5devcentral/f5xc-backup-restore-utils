@@ -53,16 +53,14 @@ Scripts writte in python. Please comment or uncomment respective function to per
 * Install neccessary modules. Refer to requirements.txt
 * F5XC Tenant URL
 * F5XC API Token
-* For restore config, ensure namespace exist prior
+* For restore config, ensure namespace exist prior restoration
 
 Please updates the tenantID and the API Key inside the python script before you run. Please refer to https://docs.cloud.f5.com/docs/how-to/user-mgmt/credentials for details to obtains an API Token.
 
+In order to backup or restore, your API Key need to have sufficient priviledge to read or write.
+
 > tenant_url = 'https://--your-tenant-id--.console.ves.volterra.io'
 > api_token = 'xxxxxxx' # API token for xxxxx
-
-Please updates the full tenantID. Example shown below. This full tenantID can be obtained from F5XC Console or obtains from sample json output. The following function will remove tenant information on the backup json file so that this backup json file can be restored on other tenant.
-
-> in_place_remove_string(item_file, '\"tenant\": \"***f5-apac-sp-yhsgmcye***\",')
 
 ##### Few tunable knobs
 
@@ -79,10 +77,12 @@ Please updates the full tenantID. Example shown below. This full tenantID can be
 > -h, --help            show this help message and exit
 >
 > --action ACTION, -a ACTION
-> Desire Action - backup / restore
+>                            Desire Action - backup / restore
 >
 > --namespace NAMESPACE, -n NAMESPACE
-> Namespace - comma deliminated
+>                            Namespace - comma deliminated
+>
+> --version             show program's version number and exit
 
 Sample output
 
@@ -104,7 +104,7 @@ If restore not working and return status code that is non 2xx, you can validate 
 
 **Example #1**
 
-Restore to new tenant
+Restore to new tenant (backup from f5-apac-sp and trying to restore on a different F5XC tenant)
 ~ ./f5xc-backup-restore.py -a restore -n mcn
 ![image](./assets/restore-new-tenant.png)
 
@@ -125,4 +125,4 @@ Details error shown why error happened. Missing required object - Rate Limiter P
 
 ![image](./assets/restore-existing-objects.png)
 
-Example shown status code 409 - Conflict object. Configuration objects already exists in the namespace.
+Example shown status code 409 - Conflict object. Configuration objects already exists in existing "mcn" namespace.

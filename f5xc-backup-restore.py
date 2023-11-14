@@ -1,5 +1,21 @@
 #!/usr/bin/python3
-
+# This script written to backup and restore F5XC configuration objects 
+# It simplify administator to perform periodic backup of configuration for future ref or restore 
+# Refer to README for details on what objects it support
+# 
+# Author: Foo-Bang
+# Date: 15 Nov 2023
+# Note:
+#   Example: ./f5xc-backup-restore.py
+# - For details on specific resources (use -h for helps)
+#   Example: 
+#   ./f5xc-backup-restore.py -a backup -n mcn # Backup configuration object in mcn namespace
+#   ./f5xc-backup-restore.py -a backup -n arcadia, arcadia-demo # Backup configuration object in arcadia and arcadia-demo namespace
+#   ./f5xc-backup-restore.py -a backup -n mcn,shared,system # Backup configuration object in mcn, shared and system namespace
+#   ./f5xc-backup-restore.py -a restore -n mcn # Restore configuration object back to mcn namespace
+#
+#  v1.1 - Release (15 Nov 2023)
+# 
 import argparse
 import requests
 import json
@@ -8,6 +24,8 @@ import warnings
 import sys
 import os
 import time
+import re
+
 from datetime import datetime
 
 warnings.filterwarnings("ignore")
@@ -27,20 +45,22 @@ def get_and_save_conf_object(ns, base_api, items_conf_object, file_format, objec
                 item_file = './' + ns + '/' + ns + '_' + file_format + '-' + item + '.json'
                 with open(item_file,'w', encoding='utf-8') as f:
                     f.write(str(response.text))
-
-                # This to remove tenant specific ID in the backup json so that this config can be reuse on another tenant
-                # Replace this tenant full id.    
-                in_place_remove_string(item_file, '\"tenant\": \"f5-apac-sp-yhsgmcye\",')
+  
+                in_place_remove_string(item_file)
                 print(f'\033[0;32m [{ns}] Backing up {object_type} object [{item}] ..... DONE' )
            else:
                 print(f'\033[0;31m [{ns}] Backing up {object_type} object [{item}] ..... FAILED - status code {response.status_code}') 
        time.sleep(sleep_time)
 ##############################################################################################################################
 
-def in_place_remove_string(file_path, string_to_remove):
+def in_place_remove_string(file_path):
     with open(file_path, 'r') as file:
         lines = file.readlines()
-    filtered_lines = [line for line in lines if string_to_remove not in line]
+    # Search for pattern of "teannt" : "<tenant-id>-xxxx", to remove tenantid dependency for backup configuration object
+    prefix = '\"tenant\": \"' + tenant_name
+    suffix_char = '\",'
+    pattern = re.compile(f'^\s*{re.escape(prefix)}.*{re.escape(suffix_char)}$')
+    filtered_lines = [line for line in lines if not pattern.match(line)]
 
     # Write the modified content back to the file
     with open(file_path, 'w') as file:
@@ -404,6 +424,7 @@ def restore_useridentification_policy (ns,wait_time):
 tenant_name = 'XXXXXXXXXXXXXXXXX' # Update with your tenant name - e.g. f5-apac-sp
 tenant_url = 'https://' + tenant_name + '.console.ves.volterra.io'
 api_token = 'xxxxxxxxxxxxxxxxx' # Update with your API token. Refer to documentation to generate API Token.
+version = '1.1'
 
 headers = {
     'Content-Type': 'application/json',
@@ -413,7 +434,7 @@ headers = {
 parser = argparse.ArgumentParser(description='F5XC Backup/Restore Utility Usage')
 parser.add_argument('--action','-a', help='Desire Action - backup / restore', required=True)
 parser.add_argument('--namespace','-n', help='Namespace - comma deliminated', required=True)
-
+parser.add_argument('--version', action='version', version=f'%(prog)s v{version}')
 
 args = vars(parser.parse_args())
 namespace = args['namespace']
@@ -431,9 +452,9 @@ restore_wait_time = 2
 if args['action'] == 'backup':
     utc_now = datetime.utcnow()
     formatted_utc_now = utc_now.strftime('%Y-%m-%d %H:%M:%S UTC')
-    print(f'\033[0;35m \n===============================================================================================================' )
+    print(f'\033[0;35m\n ======================================================================================================================' )
     print(f'\033[0;35m [STARTED]     Date: {formatted_utc_now}     Tenant: {tenant_name}     TASK: BACKUP       Namespace: {namespace}')
-    print(f'\033[0;35m ===============================================================================================================' )
+    print(f'\033[0;35m ======================================================================================================================' )
 
     items_ns = namespace.split(',')
 
@@ -463,9 +484,9 @@ if args['action'] == 'backup':
 elif args['action'] == 'restore':
     utc_now = datetime.utcnow()
     formatted_utc_now = utc_now.strftime('%Y-%m-%d %H:%M:%S UTC')
-    print(f'\033[0;35m \n===========================================================================================================================' )
+    print(f'\033[0;35m \n==================================================================================================================================' )
     print(f'\033[0;35m [STARTED]     Date: {formatted_utc_now}      Tenant: {tenant_name}    TASK: RESTORE      Namespace: {namespace}' )
-    print(f'\033[0;35m =============================================================================================================================' )
+    print(f'\033[0;35m ====================================================================================================================================' )
 
     items_ns = namespace.split(',')
     
@@ -496,6 +517,6 @@ elif args['action'] == 'restore':
 
 utc_now = datetime.utcnow()
 formatted_utc_now = utc_now.strftime('%Y-%m-%d %H:%M:%S UTC')
-print(f'\033[0;35m ======================================================================================================' )
+print(f'\033[0;35m ================================================================================================================' )
 print(f'\033[0;35m [COMPLETED]   Date: {formatted_utc_now}     Tenant: {tenant_name}')
-print(f'\033[0;35m ======================================================================================================\n' )
+print(f'\033[0;35m ================================================================================================================\n' )
