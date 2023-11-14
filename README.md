@@ -119,8 +119,8 @@ Details error shown why error happened. Missing required object - Rate Limiter P
 
 **Example #2**
 
-Eror code 409 - Conflict. Configuration exists in the namespace.
-
 ~ ./f5xc-backup-restore.py -a restore -n mcn
 
 ![image](./assets/restore-existing-objects.png)
+
+Example shown status code 409 - Conflict object. Configuration objects already exists in the namespace.
