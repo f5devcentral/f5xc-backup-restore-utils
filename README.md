@@ -98,11 +98,9 @@ Backup more than one namespace with comma deliminated
 
 **Troubleshooting**
 
-
-If restore not working and return status code that is non 2xx, you can validate the issues by using F5XC Console GUI.
+If restore not working and return status code that is non 2xx, you can validate those issues by using F5XC Console GUI.
 
 **Example #1**
-
 
 Restore to new tenant
 ~ ./f5xc-backup-restore.py -a restore -n mcn
@@ -121,8 +119,8 @@ Details error shown why error happened. Missing required object - Rate Limiter P
 
 **Example #2**
 
-
 Eror code 409 - Conflict. Configuration exists in the namespace.
 
 ~ ./f5xc-backup-restore.py -a restore -n mcn
+
 ![image](./assets/restore-existing-objects.png)
