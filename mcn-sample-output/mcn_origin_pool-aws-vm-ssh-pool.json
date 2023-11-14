@@ -1,0 +1,149 @@
+{
+  "object": {
+    "metadata": {
+      "name": "aws-vm-ssh-pool",
+      "namespace": "mcn",
+      "uid": "22acddca-1539-4650-a8af-f209b841232e",
+      "labels": {
+      },
+      "annotations": {
+      },
+      "description": "",
+      "disable": false
+    },
+    "system_metadata": {
+      "uid": "22acddca-1539-4650-a8af-f209b841232e",
+      "creation_timestamp": "2023-11-14T00:47:55.943377621Z",
+      "deletion_timestamp": null,
+      "modification_timestamp": null,
+      "initializers": null,
+      "finalizers": [
+      ],
+      "creator_class": "prism",
+      "creator_id": "xxx@f5.com",
+      "creator_cookie": "",
+      "trace_info": "626bc4e81512950c:626bc4e81512950c:0000000000000000:1",
+      "object_index": 0,
+      "namespace": [
+        {
+          "kind": "namespace",
+          "uid": "82d80fce-443f-478a-b6f6-de5d46cd1dbf",
+          "namespace": "",
+          "name": "mcn"
+        }
+      ],
+      "owner_view": null,
+      "sre_disable": false,
+      "vtrp_id": "",
+      "vtrp_stale": false,
+      "labels": {
+      }
+    },
+    "spec": {
+      "gc_spec": {
+        "origin_servers": [
+          {
+            "private_name": {
+              "dns_name": "ip-10-10-48-180.ap-southeast-2.compute.internal",
+              "refresh_interval": 300,
+              "site_locator": {
+                "site": {
+                  "namespace": "system",
+                  "name": "foobz-appstack-aws"
+                }
+              },
+              "outside_network": {
+
+              }
+            },
+            "labels": {
+            }
+          }
+        ],
+        "no_tls": {
+
+        },
+        "port": 22,
+        "same_as_endpoint_port": {
+
+        },
+        "healthcheck": [
+        ],
+        "loadbalancer_algorithm": "LB_OVERRIDE",
+        "endpoint_selection": "LOCAL_PREFERRED",
+        "advanced_options": null,
+        "view_internal": {
+          "namespace": "mcn",
+          "name": "origin-pool-aws-vm-ssh-pool"
+        }
+      }
+    }
+  },
+  "create_form": null,
+  "replace_form": null,
+  "resource_version": "722399401",
+  "metadata": {
+    "name": "aws-vm-ssh-pool",
+    "namespace": "mcn",
+    "labels": {
+    },
+    "annotations": {
+    },
+    "description": "",
+    "disable": false
+  },
+  "system_metadata": {
+    "uid": "22acddca-1539-4650-a8af-f209b841232e",
+    "creation_timestamp": "2023-11-14T00:47:55.943377621Z",
+    "deletion_timestamp": null,
+    "modification_timestamp": null,
+    "initializers": null,
+    "finalizers": [
+    ],
+    "creator_class": "prism",
+    "creator_id": "xxx@f5.com",
+    "object_index": 0,
+    "owner_view": null,
+    "labels": {
+    }
+  },
+  "spec": {
+    "origin_servers": [
+      {
+        "private_name": {
+          "dns_name": "ip-10-10-48-180.ap-southeast-2.compute.internal",
+          "refresh_interval": 300,
+          "site_locator": {
+            "site": {
+              "namespace": "system",
+              "name": "foobz-appstack-aws"
+            }
+          },
+          "outside_network": {
+
+          }
+        },
+        "labels": {
+        }
+      }
+    ],
+    "no_tls": {
+
+    },
+    "port": 22,
+    "same_as_endpoint_port": {
+
+    },
+    "healthcheck": [
+    ],
+    "loadbalancer_algorithm": "LB_OVERRIDE",
+    "endpoint_selection": "LOCAL_PREFERRED",
+    "advanced_options": null
+  },
+  "referring_objects": [
+  ],
+  "deleted_referred_objects": [
+  ],
+  "disabled_referred_objects": [
+  ]
+}

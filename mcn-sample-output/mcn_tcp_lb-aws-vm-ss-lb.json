@@ -1,0 +1,180 @@
+{
+  "object": {
+    "metadata": {
+      "name": "aws-vm-ss-lb",
+      "namespace": "mcn",
+      "uid": "e7febbfb-822d-45a5-b88e-163be4879f1c",
+      "labels": {
+      },
+      "annotations": {
+      },
+      "description": "",
+      "disable": false
+    },
+    "system_metadata": {
+      "uid": "e7febbfb-822d-45a5-b88e-163be4879f1c",
+      "creation_timestamp": "2023-11-14T00:48:38.524143008Z",
+      "deletion_timestamp": null,
+      "modification_timestamp": null,
+      "initializers": null,
+      "finalizers": [
+      ],
+      "creator_class": "prism",
+      "creator_id": "xxx@f5.com",
+      "creator_cookie": "",
+      "trace_info": "00b6e4b64d97d9ae:00b6e4b64d97d9ae:0000000000000000:1",
+      "object_index": 0,
+      "namespace": [
+        {
+          "kind": "namespace",
+          "uid": "82d80fce-443f-478a-b6f6-de5d46cd1dbf",
+          "namespace": "",
+          "name": "mcn"
+        }
+      ],
+      "owner_view": null,
+      "sre_disable": false,
+      "vtrp_id": "",
+      "vtrp_stale": false,
+      "labels": {
+      }
+    },
+    "spec": {
+      "gc_spec": {
+        "domains": [
+        ],
+        "listen_port": 1111,
+        "with_sni": false,
+        "no_sni": {
+
+        },
+        "dns_volterra_managed": false,
+        "origin_pools": [
+        ],
+        "origin_pools_weights": [
+          {
+            "pool": {
+              "namespace": "mcn",
+              "name": "aws-vm-ssh-pool"
+            },
+            "weight": 1,
+            "priority": 1,
+            "endpoint_subsets": {
+            }
+          }
+        ],
+        "advertise_on_public_default_vip": {
+
+        },
+        "hash_policy_choice_round_robin": {
+
+        },
+        "idle_timeout": 3600000,
+        "retract_cluster": {
+
+        },
+        "tcp": {
+
+        },
+        "service_policies_from_namespace": {
+
+        },
+        "view_internal": {
+          "namespace": "mcn",
+          "name": "tcp-loadbalancer-aws-vm-ss-lb"
+        },
+        "host_name": "",
+        "dns_info": [
+        ],
+        "auto_cert_info": null,
+        "downstream_tls_certificate_expiration_timestamps": [
+        ],
+        "internet_vip_info": [
+        ]
+      }
+    }
+  },
+  "create_form": null,
+  "replace_form": null,
+  "resource_version": "722400185",
+  "metadata": {
+    "name": "aws-vm-ss-lb",
+    "namespace": "mcn",
+    "labels": {
+    },
+    "annotations": {
+    },
+    "description": "",
+    "disable": false
+  },
+  "system_metadata": {
+    "uid": "e7febbfb-822d-45a5-b88e-163be4879f1c",
+    "creation_timestamp": "2023-11-14T00:48:38.524143008Z",
+    "deletion_timestamp": null,
+    "modification_timestamp": null,
+    "initializers": null,
+    "finalizers": [
+    ],
+    "creator_class": "prism",
+    "creator_id": "xxx@f5.com",
+    "object_index": 0,
+    "owner_view": null,
+    "labels": {
+    }
+  },
+  "spec": {
+    "domains": [
+    ],
+    "listen_port": 1111,
+    "no_sni": {
+
+    },
+    "dns_volterra_managed": false,
+    "origin_pools": [
+    ],
+    "origin_pools_weights": [
+      {
+        "pool": {
+          "namespace": "mcn",
+          "name": "aws-vm-ssh-pool"
+        },
+        "weight": 1,
+        "priority": 1,
+        "endpoint_subsets": {
+        }
+      }
+    ],
+    "advertise_on_public_default_vip": {
+
+    },
+    "hash_policy_choice_round_robin": {
+
+    },
+    "idle_timeout": 3600000,
+    "retract_cluster": {
+
+    },
+    "tcp": {
+
+    },
+    "service_policies_from_namespace": {
+
+    },
+    "host_name": "",
+    "dns_info": [
+    ],
+    "auto_cert_info": null,
+    "downstream_tls_certificate_expiration_timestamps": [
+    ],
+    "internet_vip_info": [
+    ]
+  },
+  "status": [
+  ],
+  "referring_objects": [
+  ],
+  "deleted_referred_objects": [
+  ],
+  "disabled_referred_objects": [
+  ]
+}

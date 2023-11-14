@@ -1,0 +1,211 @@
+{
+  "object": {
+    "metadata": {
+      "name": "tiny-web-aws-pool",
+      "namespace": "mcn",
+      "uid": "0dd38062-50e1-43bc-910f-85c96fdd3eb6",
+      "labels": {
+      },
+      "annotations": {
+      },
+      "description": "",
+      "disable": false
+    },
+    "system_metadata": {
+      "uid": "0dd38062-50e1-43bc-910f-85c96fdd3eb6",
+      "creation_timestamp": "2023-11-14T00:48:02.206884694Z",
+      "deletion_timestamp": null,
+      "modification_timestamp": null,
+      "initializers": null,
+      "finalizers": [
+      ],
+      "creator_class": "prism",
+      "creator_id": "xxx@f5.com",
+      "creator_cookie": "",
+      "trace_info": "5059da1bb1fd9732:5059da1bb1fd9732:0000000000000000:1",
+      "object_index": 0,
+      "namespace": [
+        {
+          "kind": "namespace",
+          "uid": "82d80fce-443f-478a-b6f6-de5d46cd1dbf",
+          "namespace": "",
+          "name": "mcn"
+        }
+      ],
+      "owner_view": null,
+      "sre_disable": false,
+      "vtrp_id": "",
+      "vtrp_stale": false,
+      "labels": {
+      }
+    },
+    "spec": {
+      "gc_spec": {
+        "origin_servers": [
+          {
+            "private_name": {
+              "dns_name": "ip-10-1-13-205.ap-southeast-2.compute.internal",
+              "refresh_interval": 300,
+              "site_locator": {
+                "site": {
+                  "namespace": "system",
+                  "name": "foobz-aws-ce-multi-aus"
+                }
+              },
+              "inside_network": {
+
+              }
+            },
+            "labels": {
+            }
+          }
+        ],
+        "no_tls": {
+
+        },
+        "port": 80,
+        "same_as_endpoint_port": {
+
+        },
+        "healthcheck": [
+          {
+            "namespace": "mcn",
+            "name": "http-hc"
+          }
+        ],
+        "loadbalancer_algorithm": "LB_OVERRIDE",
+        "endpoint_selection": "LOCAL_PREFERRED",
+        "advanced_options": {
+          "connection_timeout": 0,
+          "http_idle_timeout": 0,
+          "default_circuit_breaker": {
+
+          },
+          "outlier_detection": {
+            "consecutive_5xx": 2,
+            "interval": 2000,
+            "base_ejection_time": 4000,
+            "max_ejection_percent": 100,
+            "consecutive_gateway_failure": 2
+          },
+          "no_panic_threshold": {
+
+          },
+          "disable_subsets": {
+
+          },
+          "auto_http_config": {
+
+          },
+          "header_transformation_type": {
+            "default_header_transformation": {
+
+            }
+          }
+        },
+        "view_internal": {
+          "namespace": "mcn",
+          "name": "origin-pool-tiny-web-aws-pool"
+        }
+      }
+    }
+  },
+  "create_form": null,
+  "replace_form": null,
+  "resource_version": "722399510",
+  "metadata": {
+    "name": "tiny-web-aws-pool",
+    "namespace": "mcn",
+    "labels": {
+    },
+    "annotations": {
+    },
+    "description": "",
+    "disable": false
+  },
+  "system_metadata": {
+    "uid": "0dd38062-50e1-43bc-910f-85c96fdd3eb6",
+    "creation_timestamp": "2023-11-14T00:48:02.206884694Z",
+    "deletion_timestamp": null,
+    "modification_timestamp": null,
+    "initializers": null,
+    "finalizers": [
+    ],
+    "creator_class": "prism",
+    "creator_id": "xxx@f5.com",
+    "object_index": 0,
+    "owner_view": null,
+    "labels": {
+    }
+  },
+  "spec": {
+    "origin_servers": [
+      {
+        "private_name": {
+          "dns_name": "ip-10-1-13-205.ap-southeast-2.compute.internal",
+          "refresh_interval": 300,
+          "site_locator": {
+            "site": {
+              "namespace": "system",
+              "name": "foobz-aws-ce-multi-aus"
+            }
+          },
+          "inside_network": {
+
+          }
+        },
+        "labels": {
+        }
+      }
+    ],
+    "no_tls": {
+
+    },
+    "port": 80,
+    "same_as_endpoint_port": {
+
+    },
+    "healthcheck": [
+      {
+        "namespace": "mcn",
+        "name": "http-hc"
+      }
+    ],
+    "loadbalancer_algorithm": "LB_OVERRIDE",
+    "endpoint_selection": "LOCAL_PREFERRED",
+    "advanced_options": {
+      "connection_timeout": 0,
+      "http_idle_timeout": 0,
+      "default_circuit_breaker": {
+
+      },
+      "outlier_detection": {
+        "consecutive_5xx": 2,
+        "interval": 2000,
+        "base_ejection_time": 4000,
+        "max_ejection_percent": 100,
+        "consecutive_gateway_failure": 2
+      },
+      "no_panic_threshold": {
+
+      },
+      "disable_subsets": {
+
+      },
+      "auto_http_config": {
+
+      },
+      "header_transformation_type": {
+        "default_header_transformation": {
+
+        }
+      }
+    }
+  },
+  "referring_objects": [
+  ],
+  "deleted_referred_objects": [
+  ],
+  "disabled_referred_objects": [
+  ]
+}

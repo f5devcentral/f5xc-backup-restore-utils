@@ -1,0 +1,119 @@
+{
+  "object": {
+    "metadata": {
+      "name": "test-sp",
+      "namespace": "mcn",
+      "uid": "779ed14e-e559-4dfc-b9bd-7f29c372bc39",
+      "labels": {
+      },
+      "annotations": {
+      },
+      "description": "",
+      "disable": false
+    },
+    "system_metadata": {
+      "uid": "779ed14e-e559-4dfc-b9bd-7f29c372bc39",
+      "creation_timestamp": "2023-11-14T00:48:13.647604185Z",
+      "deletion_timestamp": null,
+      "modification_timestamp": null,
+      "initializers": null,
+      "finalizers": [
+      ],
+      "creator_class": "prism",
+      "creator_id": "xxx@f5.com",
+      "creator_cookie": "",
+      "trace_info": "7e3a1fe7e990017f:7e3a1fe7e990017f:0000000000000000:1",
+      "object_index": 0,
+      "namespace": [
+        {
+          "kind": "namespace",
+          "uid": "82d80fce-443f-478a-b6f6-de5d46cd1dbf",
+          "namespace": "",
+          "name": "mcn"
+        }
+      ],
+      "owner_view": null,
+      "sre_disable": false,
+      "vtrp_id": "",
+      "vtrp_stale": false,
+      "labels": {
+      }
+    },
+    "spec": {
+      "gc_spec": {
+        "algo": "FIRST_MATCH",
+        "any_server": {
+
+        },
+        "port_matcher": null,
+        "role": null,
+        "deny_info": null,
+        "default_forwarding_classes": [
+        ],
+        "rules": [
+        ],
+        "rule_list": {
+          "rules": [
+          ]
+        },
+        "view_internal": {
+          "namespace": "mcn",
+          "name": "service-policy-test-sp"
+        },
+        "simple_rules": [
+        ]
+      }
+    }
+  },
+  "create_form": null,
+  "replace_form": null,
+  "resource_version": "722399742",
+  "metadata": {
+    "name": "test-sp",
+    "namespace": "mcn",
+    "labels": {
+    },
+    "annotations": {
+    },
+    "description": "",
+    "disable": false
+  },
+  "system_metadata": {
+    "uid": "779ed14e-e559-4dfc-b9bd-7f29c372bc39",
+    "creation_timestamp": "2023-11-14T00:48:13.647604185Z",
+    "deletion_timestamp": null,
+    "modification_timestamp": null,
+    "initializers": null,
+    "finalizers": [
+    ],
+    "creator_class": "prism",
+    "creator_id": "xxx@f5.com",
+    "object_index": 0,
+    "owner_view": null,
+    "labels": {
+    }
+  },
+  "spec": {
+    "algo": "FIRST_MATCH",
+    "any_server": {
+
+    },
+    "port_matcher": null,
+    "rules": [
+    ],
+    "rule_list": {
+      "rules": [
+      ]
+    },
+    "simple_rules": [
+    ]
+  },
+  "status": [
+  ],
+  "referring_objects": [
+  ],
+  "deleted_referred_objects": [
+  ],
+  "disabled_referred_objects": [
+  ]
+}

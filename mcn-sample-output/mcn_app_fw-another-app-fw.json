@@ -1,0 +1,163 @@
+{
+  "object": {
+    "metadata": {
+      "name": "another-app-fw",
+      "namespace": "mcn",
+      "uid": "29206390-8634-4a60-b4cf-a8345ad15678",
+      "labels": {
+      },
+      "annotations": {
+      },
+      "description": "",
+      "disable": false
+    },
+    "system_metadata": {
+      "uid": "29206390-8634-4a60-b4cf-a8345ad15678",
+      "creation_timestamp": "2023-11-14T00:48:10.080774291Z",
+      "deletion_timestamp": null,
+      "modification_timestamp": null,
+      "initializers": null,
+      "finalizers": [
+      ],
+      "creator_class": "prism",
+      "creator_id": "xxx@f5.com",
+      "creator_cookie": "",
+      "trace_info": "08102490e0bd1b2a:08102490e0bd1b2a:0000000000000000:1",
+      "object_index": 0,
+      "namespace": [
+        {
+          "kind": "namespace",
+          "uid": "82d80fce-443f-478a-b6f6-de5d46cd1dbf",
+          "namespace": "",
+          "name": "mcn"
+        }
+      ],
+      "owner_view": null,
+      "sre_disable": false,
+      "vtrp_id": "",
+      "vtrp_stale": false,
+      "labels": {
+      }
+    },
+    "spec": {
+      "gc_spec": {
+        "monitoring": {
+
+        },
+        "detection_settings": {
+          "signature_selection_setting": {
+            "high_medium_accuracy_signatures": {
+
+            },
+            "default_attack_type_settings": {
+
+            }
+          },
+          "enable_suppression": {
+
+          },
+          "enable_threat_campaigns": {
+
+          },
+          "default_violation_settings": {
+
+          },
+          "disable_staging": {
+
+          }
+        },
+        "bot_protection_setting": {
+          "malicious_bot_action": "BLOCK",
+          "suspicious_bot_action": "REPORT",
+          "good_bot_action": "REPORT"
+        },
+        "allow_all_response_codes": {
+
+        },
+        "default_anonymization": {
+
+        },
+        "use_default_blocking_page": {
+
+        }
+      }
+    }
+  },
+  "create_form": null,
+  "replace_form": null,
+  "resource_version": "722399658",
+  "metadata": {
+    "name": "another-app-fw",
+    "namespace": "mcn",
+    "labels": {
+    },
+    "annotations": {
+    },
+    "description": "",
+    "disable": false
+  },
+  "system_metadata": {
+    "uid": "29206390-8634-4a60-b4cf-a8345ad15678",
+    "creation_timestamp": "2023-11-14T00:48:10.080774291Z",
+    "deletion_timestamp": null,
+    "modification_timestamp": null,
+    "initializers": null,
+    "finalizers": [
+    ],
+    "creator_class": "prism",
+    "creator_id": "xxx@f5.com",
+    "object_index": 0,
+    "owner_view": null,
+    "labels": {
+    }
+  },
+  "spec": {
+    "monitoring": {
+
+    },
+    "detection_settings": {
+      "signature_selection_setting": {
+        "high_medium_accuracy_signatures": {
+
+        },
+        "default_attack_type_settings": {
+
+        }
+      },
+      "enable_suppression": {
+
+      },
+      "enable_threat_campaigns": {
+
+      },
+      "default_violation_settings": {
+
+      },
+      "disable_staging": {
+
+      }
+    },
+    "bot_protection_setting": {
+      "malicious_bot_action": "BLOCK",
+      "suspicious_bot_action": "REPORT",
+      "good_bot_action": "REPORT"
+    },
+    "allow_all_response_codes": {
+
+    },
+    "default_anonymization": {
+
+    },
+    "use_default_blocking_page": {
+
+    }
+  },
+  "status": [
+  ],
+  "referring_objects": [
+  ],
+  "deleted_referred_objects": [
+  ],
+  "disabled_referred_objects": [
+  ]
+}

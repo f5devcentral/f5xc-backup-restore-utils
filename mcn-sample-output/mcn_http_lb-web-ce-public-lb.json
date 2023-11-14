@@ -1,0 +1,384 @@
+{
+  "object": {
+    "metadata": {
+      "name": "web-ce-public-lb",
+      "namespace": "mcn",
+      "uid": "c8277648-c32c-456f-afa3-9f295f386947",
+      "labels": {
+      },
+      "annotations": {
+      },
+      "description": "",
+      "disable": false
+    },
+    "system_metadata": {
+      "uid": "c8277648-c32c-456f-afa3-9f295f386947",
+      "creation_timestamp": "2023-11-14T00:48:29.245814363Z",
+      "deletion_timestamp": null,
+      "modification_timestamp": null,
+      "initializers": null,
+      "finalizers": [
+      ],
+      "creator_class": "prism",
+      "creator_id": "xxx@f5.com",
+      "creator_cookie": "",
+      "trace_info": "7af0fa6225fe759c:7af0fa6225fe759c:0000000000000000:1",
+      "object_index": 0,
+      "namespace": [
+        {
+          "kind": "namespace",
+          "uid": "82d80fce-443f-478a-b6f6-de5d46cd1dbf",
+          "namespace": "",
+          "name": "mcn"
+        }
+      ],
+      "owner_view": null,
+      "sre_disable": false,
+      "vtrp_id": "",
+      "vtrp_stale": false,
+      "labels": {
+      }
+    },
+    "spec": {
+      "gc_spec": {
+        "domains": [
+          "web.xc.edgecnf.com"
+        ],
+        "https_auto_cert": {
+          "http_redirect": false,
+          "add_hsts": false,
+          "tls_config": {
+            "default_security": {
+
+            }
+          },
+          "no_mtls": {
+
+          },
+          "default_header": {
+
+          },
+          "enable_path_normalize": {
+
+          },
+          "port": 443,
+          "non_default_loadbalancer": {
+
+          },
+          "header_transformation_type": {
+            "default_header_transformation": {
+
+            }
+          },
+          "connection_idle_timeout": 120000,
+          "http_protocol_options": {
+            "http_protocol_enable_v1_v2": {
+
+            }
+          }
+        },
+        "downstream_tls_certificate_expiration_timestamps": [
+        ],
+        "advertise_on_public_default_vip": {
+
+        },
+        "default_route_pools": [
+          {
+            "pool": {
+              "namespace": "mcn",
+              "name": "tiny-web-aws-pool"
+            },
+            "weight": 1,
+            "priority": 1,
+            "endpoint_subsets": {
+            }
+          },
+          {
+            "pool": {
+              "namespace": "mcn",
+              "name": "tiny-web-azure-pool"
+            },
+            "weight": 1,
+            "priority": 1,
+            "endpoint_subsets": {
+            }
+          }
+        ],
+        "routes": [
+        ],
+        "origin_server_subset_rule_list": null,
+        "cors_policy": null,
+        "disable_waf": {
+
+        },
+        "add_location": true,
+        "no_challenge": {
+
+        },
+        "more_option": null,
+        "user_id_client_ip": {
+
+        },
+        "disable_rate_limit": {
+
+        },
+        "malicious_user_mitigation": null,
+        "waf_exclusion_rules": [
+        ],
+        "data_guard_rules": [
+        ],
+        "blocked_clients": [
+        ],
+        "trusted_clients": [
+        ],
+        "api_protection_rules": null,
+        "ddos_mitigation_rules": [
+        ],
+        "service_policies_from_namespace": {
+
+        },
+        "round_robin": {
+
+        },
+        "disable_trust_client_ip_headers": {
+
+        },
+        "disable_ddos_detection": {
+
+        },
+        "disable_malicious_user_detection": {
+
+        },
+        "disable_api_discovery": {
+
+        },
+        "disable_bot_defense": {
+
+        },
+        "disable_client_side_defense": {
+
+        },
+        "disable_api_definition": {
+
+        },
+        "disable_ip_reputation": {
+
+        },
+        "view_internal": {
+          "namespace": "mcn",
+          "name": "http-loadbalancer-web-ce-public-lb"
+        },
+        "host_name": "",
+        "dns_info": [
+        ],
+        "state": "VIRTUAL_HOST_DNS_A_RECORD_ADDED",
+        "auto_cert_state": "AutoCertRateLimited",
+        "auto_cert_info": {
+          "auto_cert_state": "AutoCertRateLimited",
+          "auto_cert_expiry": null,
+          "auto_cert_subject": "",
+          "auto_cert_issuer": "",
+          "dns_records": [
+          ],
+          "state_start_time": null
+        },
+        "internet_vip_info": [
+        ],
+        "csrf_policy": null,
+        "graphql_rules": [
+        ],
+        "protected_cookies": [
+        ],
+        "system_default_timeouts": {
+
+        },
+        "jwt_validation": null
+      }
+    }
+  },
+  "create_form": null,
+  "replace_form": null,
+  "resource_version": "722400078",
+  "metadata": {
+    "name": "web-ce-public-lb",
+    "namespace": "mcn",
+    "labels": {
+    },
+    "annotations": {
+    },
+    "description": "",
+    "disable": false
+  },
+  "system_metadata": {
+    "uid": "c8277648-c32c-456f-afa3-9f295f386947",
+    "creation_timestamp": "2023-11-14T00:48:29.245814363Z",
+    "deletion_timestamp": null,
+    "modification_timestamp": null,
+    "initializers": null,
+    "finalizers": [
+    ],
+    "creator_class": "prism",
+    "creator_id": "xxx@f5.com",
+    "object_index": 0,
+    "owner_view": null,
+    "labels": {
+    }
+  },
+  "spec": {
+    "domains": [
+      "web.xc.edgecnf.com"
+    ],
+    "https_auto_cert": {
+      "http_redirect": false,
+      "add_hsts": false,
+      "tls_config": {
+        "default_security": {
+
+        }
+      },
+      "no_mtls": {
+
+      },
+      "default_header": {
+
+      },
+      "enable_path_normalize": {
+
+      },
+      "port": 443,
+      "non_default_loadbalancer": {
+
+      },
+      "header_transformation_type": {
+        "default_header_transformation": {
+
+        }
+      },
+      "connection_idle_timeout": 120000,
+      "http_protocol_options": {
+        "http_protocol_enable_v1_v2": {
+
+        }
+      }
+    },
+    "downstream_tls_certificate_expiration_timestamps": [
+    ],
+    "advertise_on_public_default_vip": {
+
+    },
+    "default_route_pools": [
+      {
+        "pool": {
+          "namespace": "mcn",
+          "name": "tiny-web-aws-pool"
+        },
+        "weight": 1,
+        "priority": 1,
+        "endpoint_subsets": {
+        }
+      },
+      {
+        "pool": {
+          "namespace": "mcn",
+          "name": "tiny-web-azure-pool"
+        },
+        "weight": 1,
+        "priority": 1,
+        "endpoint_subsets": {
+        }
+      }
+    ],
+    "origin_server_subset_rule_list": null,
+    "routes": [
+    ],
+    "cors_policy": null,
+    "disable_waf": {
+
+    },
+    "add_location": true,
+    "no_challenge": {
+
+    },
+    "more_option": null,
+    "user_id_client_ip": {
+
+    },
+    "disable_rate_limit": {
+
+    },
+    "malicious_user_mitigation": null,
+    "waf_exclusion_rules": [
+    ],
+    "data_guard_rules": [
+    ],
+    "blocked_clients": [
+    ],
+    "trusted_clients": [
+    ],
+    "api_protection_rules": null,
+    "ddos_mitigation_rules": [
+    ],
+    "service_policies_from_namespace": {
+
+    },
+    "round_robin": {
+
+    },
+    "disable_trust_client_ip_headers": {
+
+    },
+    "disable_ddos_detection": {
+
+    },
+    "disable_malicious_user_detection": {
+
+    },
+    "disable_api_discovery": {
+
+    },
+    "disable_bot_defense": {
+
+    },
+    "disable_api_definition": {
+
+    },
+    "disable_ip_reputation": {
+
+    },
+    "disable_client_side_defense": {
+
+    },
+    "csrf_policy": null,
+    "graphql_rules": [
+    ],
+    "protected_cookies": [
+    ],
+    "host_name": "",
+    "dns_info": [
+    ],
+    "state": "VIRTUAL_HOST_DNS_A_RECORD_ADDED",
+    "auto_cert_info": {
+      "auto_cert_state": "AutoCertRateLimited",
+      "auto_cert_expiry": null,
+      "auto_cert_subject": "",
+      "auto_cert_issuer": "",
+      "dns_records": [
+      ],
+      "state_start_time": null
+    },
+    "internet_vip_info": [
+    ],
+    "system_default_timeouts": {
+
+    },
+    "jwt_validation": null
+  },
+  "status": [
+  ],
+  "referring_objects": [
+  ],
+  "deleted_referred_objects": [
+  ],
+  "disabled_referred_objects": [
+  ]
+}

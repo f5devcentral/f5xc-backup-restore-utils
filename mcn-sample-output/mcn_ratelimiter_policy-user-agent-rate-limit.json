@@ -1,0 +1,145 @@
+{
+  "object": {
+    "metadata": {
+      "name": "user-agent-rate-limit",
+      "namespace": "mcn",
+      "uid": "a6ded5ad-59d3-48a9-ba0c-abe6df437fa7",
+      "labels": {
+      },
+      "annotations": {
+      },
+      "description": "",
+      "disable": false
+    },
+    "system_metadata": {
+      "uid": "a6ded5ad-59d3-48a9-ba0c-abe6df437fa7",
+      "creation_timestamp": "2023-11-14T00:48:17.239058459Z",
+      "deletion_timestamp": null,
+      "modification_timestamp": null,
+      "initializers": null,
+      "finalizers": [
+      ],
+      "creator_class": "prism",
+      "creator_id": "xxx@f5.com",
+      "creator_cookie": "",
+      "trace_info": "14e2609f6ce9c114:14e2609f6ce9c114:0000000000000000:1",
+      "object_index": 0,
+      "namespace": [
+        {
+          "kind": "namespace",
+          "uid": "82d80fce-443f-478a-b6f6-de5d46cd1dbf",
+          "namespace": "",
+          "name": "mcn"
+        }
+      ],
+      "owner_view": null,
+      "sre_disable": false,
+      "vtrp_id": "",
+      "vtrp_stale": false,
+      "labels": {
+      }
+    },
+    "spec": {
+      "gc_spec": {
+        "rules": [
+          {
+            "metadata": {
+              "name": "test",
+              "description": "",
+              "disable": false
+            },
+            "spec": {
+              "bypass_rate_limiter": {
+
+              },
+              "any_ip": {
+
+              },
+              "any_asn": {
+
+              },
+              "any_country": {
+
+              },
+              "http_method": null,
+              "domain_matcher": null,
+              "path": null,
+              "headers": [
+              ]
+            }
+          }
+        ],
+        "view_internal": {
+          "namespace": "mcn",
+          "name": "rate-limiter-policy-user-agent-rate-limit"
+        }
+      }
+    }
+  },
+  "create_form": null,
+  "replace_form": null,
+  "resource_version": "722399827",
+  "metadata": {
+    "name": "user-agent-rate-limit",
+    "namespace": "mcn",
+    "labels": {
+    },
+    "annotations": {
+    },
+    "description": "",
+    "disable": false
+  },
+  "system_metadata": {
+    "uid": "a6ded5ad-59d3-48a9-ba0c-abe6df437fa7",
+    "creation_timestamp": "2023-11-14T00:48:17.239058459Z",
+    "deletion_timestamp": null,
+    "modification_timestamp": null,
+    "initializers": null,
+    "finalizers": [
+    ],
+    "creator_class": "prism",
+    "creator_id": "xxx@f5.com",
+    "object_index": 0,
+    "owner_view": null,
+    "labels": {
+    }
+  },
+  "spec": {
+    "rules": [
+      {
+        "metadata": {
+          "name": "test",
+          "description": "",
+          "disable": false
+        },
+        "spec": {
+          "bypass_rate_limiter": {
+
+          },
+          "any_ip": {
+
+          },
+          "any_asn": {
+
+          },
+          "any_country": {
+
+          },
+          "http_method": null,
+          "domain_matcher": null,
+          "path": null,
+          "headers": [
+          ]
+        }
+      }
+    ]
+  },
+  "status": [
+  ],
+  "referring_objects": [
+  ],
+  "deleted_referred_objects": [
+  ],
+  "disabled_referred_objects": [
+  ]
+}

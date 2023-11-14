@@ -1,0 +1,97 @@
+{
+  "object": {
+    "metadata": {
+      "name": "block-user-list",
+      "namespace": "mcn",
+      "uid": "2696b4bc-85f7-49c3-8eec-4a17332e49ae",
+      "labels": {
+      },
+      "annotations": {
+      },
+      "description": "",
+      "disable": false
+    },
+    "system_metadata": {
+      "uid": "2696b4bc-85f7-49c3-8eec-4a17332e49ae",
+      "creation_timestamp": "2023-11-14T00:48:22.456776889Z",
+      "deletion_timestamp": null,
+      "modification_timestamp": null,
+      "initializers": null,
+      "finalizers": [
+      ],
+      "creator_class": "prism",
+      "creator_id": "xxx@f5.com",
+      "creator_cookie": "",
+      "trace_info": "669dcabd85e2386f:669dcabd85e2386f:0000000000000000:1",
+      "object_index": 0,
+      "namespace": [
+        {
+          "kind": "namespace",
+          "uid": "82d80fce-443f-478a-b6f6-de5d46cd1dbf",
+          "namespace": "",
+          "name": "mcn"
+        }
+      ],
+      "owner_view": null,
+      "sre_disable": false,
+      "vtrp_id": "",
+      "vtrp_stale": false,
+      "labels": {
+      }
+    },
+    "spec": {
+      "gc_spec": {
+        "prefix": [
+          "10.1.1.0/24",
+          "192.168.1.1/32"
+        ],
+        "ipv6_prefix": [
+        ]
+      }
+    }
+  },
+  "create_form": null,
+  "replace_form": null,
+  "resource_version": "722399893",
+  "metadata": {
+    "name": "block-user-list",
+    "namespace": "mcn",
+    "labels": {
+    },
+    "annotations": {
+    },
+    "description": "",
+    "disable": false
+  },
+  "system_metadata": {
+    "uid": "2696b4bc-85f7-49c3-8eec-4a17332e49ae",
+    "creation_timestamp": "2023-11-14T00:48:22.456776889Z",
+    "deletion_timestamp": null,
+    "modification_timestamp": null,
+    "initializers": null,
+    "finalizers": [
+    ],
+    "creator_class": "prism",
+    "creator_id": "xxx@f5.com",
+    "object_index": 0,
+    "owner_view": null,
+    "labels": {
+    }
+  },
+  "spec": {
+    "prefix": [
+      "10.1.1.0/24",
+      "192.168.1.1/32"
+    ],
+    "ipv6_prefix": [
+    ]
+  },
+  "status": [
+  ],
+  "referring_objects": [
+  ],
+  "deleted_referred_objects": [
+  ],
+  "disabled_referred_objects": [
+  ]
+}

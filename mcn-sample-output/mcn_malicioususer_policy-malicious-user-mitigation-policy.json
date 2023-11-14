@@ -1,0 +1,165 @@
+{
+  "object": {
+    "metadata": {
+      "name": "malicious-user-mitigation-policy",
+      "namespace": "mcn",
+      "uid": "9c02a3d1-14b9-49b7-bd72-2a4302ca7e09",
+      "labels": {
+      },
+      "annotations": {
+      },
+      "description": "",
+      "disable": false
+    },
+    "system_metadata": {
+      "uid": "9c02a3d1-14b9-49b7-bd72-2a4302ca7e09",
+      "creation_timestamp": "2023-11-14T00:48:43.018996114Z",
+      "deletion_timestamp": null,
+      "modification_timestamp": null,
+      "initializers": null,
+      "finalizers": [
+      ],
+      "creator_class": "prism",
+      "creator_id": "xxx@f5.com",
+      "creator_cookie": "",
+      "trace_info": "1aec15859a01a925:1aec15859a01a925:0000000000000000:1",
+      "object_index": 0,
+      "namespace": [
+        {
+          "kind": "namespace",
+          "uid": "82d80fce-443f-478a-b6f6-de5d46cd1dbf",
+          "namespace": "",
+          "name": "mcn"
+        }
+      ],
+      "owner_view": null,
+      "sre_disable": false,
+      "vtrp_id": "",
+      "vtrp_stale": false,
+      "labels": {
+      }
+    },
+    "spec": {
+      "gc_spec": {
+        "mitigation_type": {
+          "rules": [
+            {
+              "threat_level": {
+                "low": {
+
+                }
+              },
+              "mitigation_action": {
+                "javascript_challenge": {
+
+                }
+              }
+            },
+            {
+              "threat_level": {
+                "medium": {
+
+                }
+              },
+              "mitigation_action": {
+                "captcha_challenge": {
+
+                }
+              }
+            },
+            {
+              "threat_level": {
+                "high": {
+
+                }
+              },
+              "mitigation_action": {
+                "block_temporarily": {
+
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "create_form": null,
+  "replace_form": null,
+  "resource_version": "722400280",
+  "metadata": {
+    "name": "malicious-user-mitigation-policy",
+    "namespace": "mcn",
+    "labels": {
+    },
+    "annotations": {
+    },
+    "description": "",
+    "disable": false
+  },
+  "system_metadata": {
+    "uid": "9c02a3d1-14b9-49b7-bd72-2a4302ca7e09",
+    "creation_timestamp": "2023-11-14T00:48:43.018996114Z",
+    "deletion_timestamp": null,
+    "modification_timestamp": null,
+    "initializers": null,
+    "finalizers": [
+    ],
+    "creator_class": "prism",
+    "creator_id": "xxx@f5.com",
+    "object_index": 0,
+    "owner_view": null,
+    "labels": {
+    }
+  },
+  "spec": {
+    "mitigation_type": {
+      "rules": [
+        {
+          "threat_level": {
+            "low": {
+
+            }
+          },
+          "mitigation_action": {
+            "javascript_challenge": {
+
+            }
+          }
+        },
+        {
+          "threat_level": {
+            "medium": {
+
+            }
+          },
+          "mitigation_action": {
+            "captcha_challenge": {
+
+            }
+          }
+        },
+        {
+          "threat_level": {
+            "high": {
+
+            }
+          },
+          "mitigation_action": {
+            "block_temporarily": {
+
+            }
+          }
+        }
+      ]
+    }
+  },
+  "status": [
+  ],
+  "referring_objects": [
+  ],
+  "deleted_referred_objects": [
+  ],
+  "disabled_referred_objects": [
+  ]
+}

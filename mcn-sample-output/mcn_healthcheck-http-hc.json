@@ -1,0 +1,125 @@
+{
+  "object": {
+    "metadata": {
+      "name": "http-hc",
+      "namespace": "mcn",
+      "uid": "d6d28f0d-9f89-4621-bb40-7df2179cb5fb",
+      "labels": {
+      },
+      "annotations": {
+      },
+      "description": "",
+      "disable": false
+    },
+    "system_metadata": {
+      "uid": "d6d28f0d-9f89-4621-bb40-7df2179cb5fb",
+      "creation_timestamp": "2023-11-14T00:47:48.175190778Z",
+      "deletion_timestamp": null,
+      "modification_timestamp": null,
+      "initializers": null,
+      "finalizers": [
+      ],
+      "creator_class": "prism",
+      "creator_id": "xxx@f5.com",
+      "creator_cookie": "",
+      "trace_info": "21e221c8fcecd0d9:21e221c8fcecd0d9:0000000000000000:1",
+      "object_index": 5511,
+      "namespace": [
+        {
+          "kind": "namespace",
+          "uid": "82d80fce-443f-478a-b6f6-de5d46cd1dbf",
+          "namespace": "",
+          "name": "mcn"
+        }
+      ],
+      "owner_view": null,
+      "sre_disable": false,
+      "vtrp_id": "",
+      "vtrp_stale": false,
+      "labels": {
+      }
+    },
+    "spec": {
+      "gc_spec": {
+        "http_health_check": {
+          "use_origin_server_name": {
+
+          },
+          "path": "/",
+          "headers": {
+          },
+          "request_headers_to_remove": [
+          ],
+          "use_http2": false,
+          "expected_status_codes": [
+            "200"
+          ]
+        },
+        "timeout": 3,
+        "interval": 15,
+        "jitter": 0,
+        "unhealthy_threshold": 1,
+        "healthy_threshold": 3,
+        "jitter_percent": 30
+      }
+    }
+  },
+  "create_form": null,
+  "replace_form": null,
+  "resource_version": "722399245",
+  "metadata": {
+    "name": "http-hc",
+    "namespace": "mcn",
+    "labels": {
+    },
+    "annotations": {
+    },
+    "description": "",
+    "disable": false
+  },
+  "system_metadata": {
+    "uid": "d6d28f0d-9f89-4621-bb40-7df2179cb5fb",
+    "creation_timestamp": "2023-11-14T00:47:48.175190778Z",
+    "deletion_timestamp": null,
+    "modification_timestamp": null,
+    "initializers": null,
+    "finalizers": [
+    ],
+    "creator_class": "prism",
+    "creator_id": "xxx@f5.com",
+    "object_index": 5511,
+    "owner_view": null,
+    "labels": {
+    }
+  },
+  "spec": {
+    "http_health_check": {
+      "use_origin_server_name": {
+
+      },
+      "path": "/",
+      "headers": {
+      },
+      "request_headers_to_remove": [
+      ],
+      "use_http2": false,
+      "expected_status_codes": [
+        "200"
+      ]
+    },
+    "timeout": 3,
+    "interval": 15,
+    "jitter": 0,
+    "unhealthy_threshold": 1,
+    "healthy_threshold": 3,
+    "jitter_percent": 30
+  },
+  "status": [
+  ],
+  "referring_objects": [
+  ],
+  "deleted_referred_objects": [
+  ],
+  "disabled_referred_objects": [
+  ]
+}
