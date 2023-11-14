@@ -27,6 +27,9 @@ def get_and_save_conf_object(ns, base_api, items_conf_object, file_format, objec
                 item_file = './' + ns + '/' + ns + '_' + file_format + '-' + item + '.json'
                 with open(item_file,'w', encoding='utf-8') as f:
                     f.write(str(response.text))
+
+                # This to remove tenant specific ID in the backup json so that this config can be reuse on another tenant
+                # Replace this tenant full id.    
                 in_place_remove_string(item_file, '\"tenant\": \"f5-apac-sp-yhsgmcye\",')
                 print(f'\033[0;32m [{ns}] Backing up {object_type} object [{item}] ..... DONE' )
            else:

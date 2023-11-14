@@ -53,11 +53,16 @@ Scripts writte in python. Please comment or uncomment respective function to per
 * Install neccessary modules. Refer to requirements.txt
 * F5XC Tenant URL
 * F5XC API Token
+* For restore config, ensure namespace exist prior
 
-###### Please updates the tenantID and the API Key inside the python script before you run. Please refer to https://docs.cloud.f5.com/docs/how-to/user-mgmt/credentials for details to obtains an API Token.
+Please updates the tenantID and the API Key inside the python script before you run. Please refer to https://docs.cloud.f5.com/docs/how-to/user-mgmt/credentials for details to obtains an API Token.
 
 > tenant_url = 'https://--your-tenant-id--.console.ves.volterra.io'
 > api_token = 'xxxxxxx' # API token for xxxxx
+
+Please updates the full tenantID. Example shown below. This full tenantID can be obtained from F5XC Console or obtains from sample json output. The following function will remove tenant information on the backup json file so that this backup json file can be restored on other tenant.
+
+> in_place_remove_string(item_file, '\"tenant\": \"***f5-apac-sp-yhsgmcye***\",')
 
 ##### Few tunable knobs
 
@@ -90,3 +95,29 @@ Sample output
 Backup more than one namespace with comma deliminated
 ~ ./f5xc-backup-restore.py -a backup -n arcadia-trading,arcadia-demo
 ![image](./assets/backup2.png)
+
+**Troubleshooting**
+If restore not working and return status code that is non 2xx, you can validate the issues by using F5XC Console GUI.
+
+Example #1
+Restore to new tenant
+~ ./f5xc-backup-restore.py -a restore -n mcn
+![image](./assets/restore-new-tenant.png)
+
+Restore return error code 400 for "web-ce-local.json". You can copy and paste content of web-ce-local.json and paste it into F5XC console to see the details of error.
+
+Clear content of the default JSON text.
+![image](./assets/new-tenant-validate-error-code.png)
+
+Paste content of web-ce-local.json
+![image](./assets/new-tenant-paste-json.png)
+
+Details error shown why error happened. Missing required object - Rate Limiter Policies. Ensure Rate Limiter Policies restore first before restore this HTTP LB as HTTP LB reference to the rate limiter policies.
+![image](./assets/new-tenant-erorr-why.png)
+
+
+Example #2
+Eror code 409 - Conflict. Configuration exists in the namespace.
+
+~ ./f5xc-backup-restore.py -a restore -n mcn
+![image](./assets/restore-existing-objects.png)
