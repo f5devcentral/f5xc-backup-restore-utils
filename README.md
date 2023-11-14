@@ -60,6 +60,8 @@ Please updates the tenantID and the API Key inside the python script before you 
 In order to backup or restore, your API Key need to have sufficient priviledge to read or write.
 
 > tenant_url = 'https://--your-tenant-id--.console.ves.volterra.io'
+>
+>
 > api_token = 'xxxxxxx' # API token for xxxxx
 
 ##### Few tunable knobs
