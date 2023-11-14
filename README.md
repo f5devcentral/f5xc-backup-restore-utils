@@ -97,9 +97,13 @@ Backup more than one namespace with comma deliminated
 ![image](./assets/backup2.png)
 
 **Troubleshooting**
+
+
 If restore not working and return status code that is non 2xx, you can validate the issues by using F5XC Console GUI.
 
-Example #1
+**Example #1**
+
+
 Restore to new tenant
 ~ ./f5xc-backup-restore.py -a restore -n mcn
 ![image](./assets/restore-new-tenant.png)
@@ -115,8 +119,9 @@ Paste content of web-ce-local.json
 Details error shown why error happened. Missing required object - Rate Limiter Policies. Ensure Rate Limiter Policies restore first before restore this HTTP LB as HTTP LB reference to the rate limiter policies.
 ![image](./assets/new-tenant-erorr-why.png)
 
+**Example #2**
 
-Example #2
+
 Eror code 409 - Conflict. Configuration exists in the namespace.
 
 ~ ./f5xc-backup-restore.py -a restore -n mcn
