@@ -70,27 +70,8 @@ In order to backup or restore, your API Key need to have sufficient priviledge t
 * restore_wait_time - default 2s. This is the delay in seconds to avoid triggering API rate limit as well as give enough time for F5XC to process request before subsequent POST request. Important if sequence of POST dependent on previous call.
 
 ##### Usage
-
-> usage: f5xc-backup-restore.py [-h] --action ACTION --namespace NAMESPACE
->
-> F5XC Backup/Restore Utility Usage
->
-> optional arguments:
->
->
-> -h, --help            show this help message and exit
->
-> --action ACTION, -a ACTION
->
->
->                            Desire Action - backup / restore
->
-> --namespace NAMESPACE, -n NAMESPACE
->
->
->                            Namespace - comma deliminated
->
-> --version             show program's version number and exit
+~ ./f5xc-backup-restore.py -h
+![image](./assets/helps.png)
 
 Sample output
 
