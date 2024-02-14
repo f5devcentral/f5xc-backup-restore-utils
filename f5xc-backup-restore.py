@@ -56,7 +56,7 @@ def get_and_save_conf_object(ns, base_api, items_conf_object, file_format, objec
 def in_place_remove_string(file_path):
     with open(file_path, 'r') as file:
         lines = file.readlines()
-    # Search for pattern of "teannt" : "<tenant-id>-xxxx", to remove tenantid dependency for backup configuration object
+    # Search for pattern of "tenant" : "<tenant-id>-xxxx", to remove tenantid dependency for backup configuration object
     prefix = '\"tenant\": \"' + tenant_name
     suffix_char = '\",'
     pattern = re.compile(f'^\s*{re.escape(prefix)}.*{re.escape(suffix_char)}$')
@@ -419,12 +419,114 @@ def restore_useridentification_policy (ns,wait_time):
 ####### MAIN ##########
 #######################
 
-
 # Global Variable
 tenant_name = 'XXXXXXXXXXXXXXXXX' # Update with your tenant name - e.g. f5-apac-sp
 tenant_url = 'https://' + tenant_name + '.console.ves.volterra.io'
 api_token = 'xxxxxxxxxxxxxxxxx' # Update with your API token. Refer to documentation to generate API Token.
-version = '1.1'
+version = '1.2' # Updated to version 1.2 to read tenant and API token from environment variables.
+
+try:
+    api_token = os.environ.get("XC_API_TOKEN")
+    tenant_name = os.environ.get("XC_TENANT")
+
+    tenant_url = 'https://' + tenant_name + '.console.ves.volterra.io'
+    headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'APIToken ' + api_token
+    }
+
+    parser = argparse.ArgumentParser(description='F5XC Backup/Restore Utility Usage')
+    parser.add_argument('--action','-a', help='Desire Action - backup / restore', required=True)
+    parser.add_argument('--namespace','-n', help='Namespace - comma deliminated', required=True)
+    parser.add_argument('--version', action='version', version=f'%(prog)s v{version}')
+    
+    args = vars(parser.parse_args())
+    namespace = args['namespace']
+    backup_wait_time = 1
+    restore_wait_time = 2
+    
+    ###api_ns = tenant_url + '/api/web/namespaces'
+    ###req_ns = requests.get(api_ns, headers=headers, verify=False)
+    ###data_ns = req_ns.json()
+    ###items_ns = data_ns['items']
+    #items_ns = ['arcadia-demo']
+    #items_ns = ['mcn','shared','system','arcadia-demo']
+    
+    if args['action'] == 'backup':
+        utc_now = datetime.utcnow()
+        formatted_utc_now = utc_now.strftime('%Y-%m-%d %H:%M:%S UTC')
+        print(f'\033[0;35m\n ======================================================================================================================' )
+        print(f'\033[0;35m [STARTED]     Date: {formatted_utc_now}     Tenant: {tenant_name}     TASK: BACKUP       Namespace: {namespace}')
+        print(f'\033[0;35m ======================================================================================================================' )
+
+        items_ns = namespace.split(',')
+
+        for item_ns in items_ns:
+            ns = item_ns
+            backup_http_lb(ns,backup_wait_time)
+            backup_origin_pool(ns,backup_wait_time)
+            backup_healthchecks(ns,backup_wait_time)
+            backup_tcp_lb(ns,backup_wait_time)
+            backup_app_fw(ns,backup_wait_time)
+            backup_xc_api_definition(ns,backup_wait_time)
+            backup_service_policy(ns,backup_wait_time)
+            backup_ratelimiter_policy(ns,backup_wait_time)
+            backup_malicioususer_policy(ns,backup_wait_time)
+            backup_useridentification_policy(ns,backup_wait_time)
+            backup_ip_prefixset(ns,backup_wait_time)
+            #backup_fwdproxy_policy(ns,backup_wait_time)
+            #backup_alert_policy(ns,backup_wait_time)
+            #backup_alert_receiver(ns,backup_wait_time)
+            #backup_global_log_receiver(ns,backup_wait_time)
+            #backup_report_conf(ns,backup_wait_time)
+            #backup_cert_mgmt(ns,backup_wait_time)
+            #backup_cert_mgmt_chain(ns,backup_wait_time)
+            #backup_svc_discovery(ns,backup_wait_time)
+        
+    elif args['action'] == 'restore':
+        utc_now = datetime.utcnow()
+        formatted_utc_now = utc_now.strftime('%Y-%m-%d %H:%M:%S UTC')
+        print(f'\033[0;35m \n==================================================================================================================================' )
+        print(f'\033[0;35m [STARTED]     Date: {formatted_utc_now}      Tenant: {tenant_name}    TASK: RESTORE      Namespace: {namespace}' )
+        print(f'\033[0;35m ====================================================================================================================================' )
+
+        items_ns = namespace.split(',')
+        
+        for item_ns in items_ns:
+            ns = item_ns
+            restore_healthchecks(ns,restore_wait_time)
+            restore_origin_pool(ns,restore_wait_time)
+            restore_app_fw(ns,restore_wait_time)
+            restore_service_policy(ns,restore_wait_time)
+            restore_ratelimiter_policy(ns,restore_wait_time)
+            restore_ip_prefixset(ns,restore_wait_time)
+            restore_http_lb(ns,restore_wait_time) # Note: New Auto-Cert will generate new cert.
+            restore_tcp_lb(ns,restore_wait_time) # Note: Hostname (start with ves-io-xxxx will be generate new)
+            restore_malicioususer_policy(ns,restore_wait_time)
+            restore_useridentification_policy(ns,restore_wait_time)
+            
+            #restore_fwdproxy_policy(ns,restore_wait_time)
+            #restore_xc_api_definition(ns,restore_wait_time) # Need swagger file uploaded and update swagger link.
+            #backup_cert_mgmt(ns,restore_wait_time)
+            #backup_cert_mgmt_chain(ns,restore_wait_time)
+            #backup_alert_policy(ns,restore_wait_time)
+            #backup_alert_receiver(ns,restore_wait_time)
+            #backup_global_log_receiver(ns,restore_wait_time)
+            #backup_report_conf(ns,restore_wait_time) # Need reciever of report group created prior
+            #backup_svc_discovery(ns,restore_wait_time) # site must exist prior
+        
+    utc_now = datetime.utcnow()
+    formatted_utc_now = utc_now.strftime('%Y-%m-%d %H:%M:%S UTC')
+    print(f'\033[0;35m ================================================================================================================' )
+    print(f'\033[0;35m [COMPLETED]   Date: {formatted_utc_now}     Tenant: {tenant_name}')
+    print(f'\033[0;35m ================================================================================================================\n' )
+
+except KeyError:
+    print( "Please set the environment variables XC_API_TOKEN and XC_TENANT" )
+    sys.exit(1)
+
+"""
+tenant_url = 'https://' + tenant_name + '.console.ves.volterra.io'
 
 headers = {
     'Content-Type': 'application/json',
@@ -501,8 +603,8 @@ elif args['action'] == 'restore':
        restore_http_lb(ns,restore_wait_time) # Note: New Auto-Cert will generate new cert.
        restore_tcp_lb(ns,restore_wait_time) # Note: Hostname (start with ves-io-xxxx will be generate new)
        restore_malicioususer_policy(ns,restore_wait_time)
-       
-       #restore_useridentification_policy(ns,restore_wait_time)
+       restore_useridentification_policy(ns,restore_wait_time)
+
        #restore_fwdproxy_policy(ns,restore_wait_time)
        #restore_xc_api_definition(ns,restore_wait_time) # Need swagger file uploaded and update swagger link.
        #backup_cert_mgmt(ns,restore_wait_time)
@@ -520,3 +622,4 @@ formatted_utc_now = utc_now.strftime('%Y-%m-%d %H:%M:%S UTC')
 print(f'\033[0;35m ================================================================================================================' )
 print(f'\033[0;35m [COMPLETED]   Date: {formatted_utc_now}     Tenant: {tenant_name}')
 print(f'\033[0;35m ================================================================================================================\n' )
+ """
