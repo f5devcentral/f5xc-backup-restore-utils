@@ -1,32 +1,41 @@
-# F5XC Configuration Object Backup/Restore Utils
+# F5 Distributed Cloud Backup/Restore Operations
 
-This script assist F5 Distributed Cloud (F5XC) administrator to simplify operation of backup and restore configuration objects from/to F5XC Portal.
+![License](https://img.shields.io/github/license/f5-devcentral/f5xc-backup-restore-utils)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![GitHub branch checks state](https://img.shields.io/github/checks-status/f5-devcentral/f5xc-backup-restore-utils/master?label=build%20checks)](https://github.com/f5-devcentral/f5xc-backup-restore-utils/actions)
+[![GitHub deploy checks state](https://img.shields.io/github/checks-status/f5-devcentral/f5xc-backup-restore-utils/deploy?label=deploy%20checks)](https://github.com/f5-devcentral/f5xc-backup-restore-utils/actions)
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/f5-devcentral/f5xc-backup-restore-utils)](https://github.com/f5-devcentral/f5xc-backup-restore-utils/pulse/monthly)
 
-**Backup Function**
+[![powered by semgrep](https://img.shields.io/badge/powered%20by-semgrep-1B2F3D?labelColor=lightgrey&link=https://semgrep.live/&style=flat-square&logo=data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAA0AAAAOCAYAAAD0f5bSAAAABmJLR0QA/gD+AP+cH+QUAAAACXBIWXMAAA3XAAAN1wFCKJt4AAAAB3RJTUUH5AYMEy0l8dkqrQAAAvFJREFUKBUB5gIZ/QEAAP8BAAAAAAMG6AD9+hn/GzA//wD//wAAAAD+AAAAAgABAQDl0MEBAwbmAf36GQAAAAAAAQEC9QH//gv/Gi1GFQEC+OoAAAAAAAAAAAABAQAA//8AAAAAAAAAAAD//ggX5tO66gID9AEBFSRxAgYLzRQAAADpAAAAAP7+/gDl0cMPAAAA+wAAAPkbLz39AgICAAAAAAAAAAAs+vU12AEbLz4bAAAA5P8AAAAA//4A5NDDEwEBAO///wABAQEAAP//ABwcMD7hAQEBAAAAAAAAAAAaAgAAAOAAAAAAAQEBAOXRwxUAAADw//8AAgAAAAD//wAAAAAA5OXRwhcAAQEAAAAAAAAAAOICAAAABP3+/gDjzsAT//8A7gAAAAEAAAD+AAAA/wAAAAAAAAAA//8A7ePOwA/+/v4AAAAABAIAAAAAAAAAAAAAAO8AAAABAAAAAAAAAAIAAAABAAAAAAAAAAgAAAD/AAAA8wAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA8AAAAEAAAA/gAAAP8AAAADAAAA/gAAAP8AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA7wAAAPsAAAARAAAABAAAAP4AAAAAAAAAAgAAABYAAAAAAAAAAAIAAAD8AwICAB0yQP78/v4GAAAA/wAAAPAAAAD9AAAA/wAAAPr9//8aHTJA6AICAgAAAAD8AgAAADIAAAAAAP//AB4wPvgAAAARAQEA/gEBAP4BAQABAAAAGB0vPeIA//8AAAAAAAAAABAC+vUz1QAAAA8AAAAAAwMDABwwPu3//wAe//8AAv//ABAcMD7lAwMDAAAAAAAAAAAG+vU0+QEBAvUB//4L/xotRhUBAvjqAAAAAAAAAAAAAQEAAP//AAAAAAAAAAAA//4IF+bTuuoCA/QBAQAA/wEAAAAAAwboAP36Gf8bMD//AP//AAAAAP4AAAACAAEBAOXQwQEDBuYB/foZAAAAAAD4I6qbK3+1zQAAAABJRU5ErkJggg==)](https://github.com/f5-devcentral/f5xc-backup-restore-utils/actions/workflows/secops-code-scan.yml)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/f5-devcentral/f5xc-backup-restore-utils/master.svg)](https://results.pre-commit.ci/latest/github/f5-devcentral/f5xc-backup-restore-utils/master)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/f5-devcentral/f5xc-backup-restore-utils/badge)](https://api.securityscorecards.dev/projects/github.com/f5-devcentral/f5xc-backup-restore-utils)
+[![OpenSSF Best Practices](https://bestpractices.coreinfrastructure.org/projects/7409/badge)](https://bestpractices.coreinfrastructure.org/projects/7409)
 
-* Recursively send API call (e.g. GET) to retrieve respective configuration objects and write output as JSON format into a file.
+### Introduction
 
-**Restore Function**
+This repository contains tools designed to help network operations staff save and restore the configuration from their F5 Distributed Cloud tenant. These tools are scripts to be run on a Linux server to create a backup file of the configuration settings (backup function) or to apply those settings to a system (restore function).
 
-* Recursively read local backup file (JSON format) and send API call (e.g. POST) to configure and create configuration objects.
+### Prerequisites
 
-##### Note:
+Before using these tools, you need to have the following:
 
-* Both functions above interact directly with F5XC Portal API GW.
-* For restore function, it only support creation of new objects. It does not update existing objects (e.g. PUT) - "error code 409 - Conflict" will shown if object exist. Ensure objects are deleted before restore.
-* Backup file will be stored on a local folder based on namespace. Each configuration objects will prefix with object type as a filename.
-* Restoration will read from local folder based on namespace. Each respective configuration objects will be read based on object type filename.
+- **Python 3.x**: This is the programming language in which the script is written. You need to have it installed on your system to run the script.
+- **F5XC Tenant URL**: This is the web address of your specific network management area.
+- **F5XC API Token**: This is a special code that allows the script to access and modify your network settings. You can obtain an API Token by following the instructions provided in the F5 documentation [here](https://docs.cloud.f5.com/docs/how-to/user-mgmt/credentials).
+- **Namespace**: Before running the restore function, make sure the namespace (a specific area within your tenant where settings are applied) exists.
 
-### Applicable Use Cases
+### Installation
 
-1. Daily/weekly or monthly configuration backup and versioning of backup to ensure it can be restored back in future.
-2. What if certain configuration objects been tampered and require restoration of good configuration.
-3. Before perform production changes, backup for reference or for recovery.
+Refer to [INSTALL.md](/INSTALL.md) for installation instructions.
 
-##### Note:
+### Usage
 
-- Supported backup and restore configuration objects
-  - HTTP Load Balancer
+Refer to [USAGE.md](/USAGE.md) for usage instructions.
+
+> [!IMPORTANT]
+> The following configuration objects are supported for backup and restore functions only:
+
+- HTTP Load Balancer
   - TCP Load Balancer
   - Origin Servers and Pools
   - Health Check
@@ -45,73 +54,46 @@ This script assist F5 Distributed Cloud (F5XC) administrator to simplify operati
   - Certificate Management Chain
   - Service Discovery
 
-Scripts writte in python. Please comment or uncomment respective function to perform desired outcome. Each respective function performs a single action.
+### Example Output
 
-##### Requirement :
+The following is an example of output from a backup:
 
-* Python 3.x
-* Install neccessary modules. Refer to requirements.txt
-* F5XC Tenant URL
-* F5XC API Token
-* For restore config, ensure namespace exist prior restoration
+```bash
 
-Please updates the tenantID and the API Key inside the python script before you run. Please refer to https://docs.cloud.f5.com/docs/how-to/user-mgmt/credentials for details to obtains an API Token.
+backup-server$python3 f5xc-backup-restore.py -a backup -p /var/backup -n mcn-sample
+/var/backup/f5xc-backup-20240221_070526
+/var/backup
 
-In order to backup or restore, your API Key need to have sufficient priviledge to read or write.
+======================================================================================================================
+[STARTED]     Date: 2024-02-21 07:05:26 UTC     Tenant: f5-xctestdrive     TASK: BACKUP       Namespace: mcn-sample
+======================================================================================================================
+[mcn-sample] Backing up HTTP Loadbalancer object [mcn-sample-lb] ..... DONE
+[mcn-sample] Backing up Origin Pool object [mcn-sample-originpool] ..... DONE
+[mcn-sample] Backing up Health Check object [mcn-sample-hc] ..... DONE
+[mcn-sample] Backing up App Firewall object [mcn-sample-appfw] ..... DONE
+[mcn-sample] Backing up Malicious User Mitigation object [mcn-sample-maluser-policy] ..... DONE
+================================================================================================================
+[COMPLETED]   Date: 2024-02-21 07:05:58 UTC     Tenant: f5-xctestdrive
+================================================================================================================
 
-> tenant_url = 'https://--your-tenant-id--.console.ves.volterra.io'
->
->
-> api_token = 'xxxxxxx' # API token for xxxxx
+```
 
-##### Few tunable knobs
+The following is an exmaple of output from a restore:
 
-* backup_wait_time - default 1s. This is the delay in seconds to avoid triggering API rate limit.
-* restore_wait_time - default 2s. This is the delay in seconds to avoid triggering API rate limit as well as give enough time for F5XC to process request before subsequent POST request. Important if sequence of POST dependent on previous call.
+```bash
 
-##### Usage
-~ ./f5xc-backup-restore.py -h
-![image](./assets/helps.png)
-
-Sample output
-
-~ ./f5xc-backup-restore.py -a backup -n mcn
-![image](./assets/backup.png)
-
-~ ./f5xc-backup-restore.py -a restore -n mcn
-![image](./assets/restore.png)
-
-Backup more than one namespace with comma deliminated
-
-~ ./f5xc-backup-restore.py -a backup -n arcadia-trading,arcadia-demo
-
-![image](./assets/backup2.png)
-
-**Troubleshooting**
-
-If restore not working and return status code that is non 2xx, you can validate those issues by using F5XC Console GUI.
-
-**Example #1**
-
-Restore to new tenant (backup from f5-apac-sp and trying to restore on a different F5XC tenant)
-~ ./f5xc-backup-restore.py -a restore -n mcn
-![image](./assets/restore-new-tenant.png)
-
-Restore return status/error code 400 for "web-ce-local.json". You can copy and paste content of web-ce-local.json and paste it into F5XC console to see the details of error.
-
-Clear content of the default JSON text.
-![image](./assets/new-tenant-validate-error-code.png)
-
-Paste content of web-ce-local.json
-![image](./assets/new-tenant-paste-json.png)
-
-Details error shown why error happened. Missing required object - Rate Limiter Policies. Ensure Rate Limiter Policies restore first before restore this HTTP LB as HTTP LB reference to the rate limiter policies.
-![image](./assets/new-tenant-erorr-why.png)
-
-**Example #2**
-
-~ ./f5xc-backup-restore.py -a restore -n mcn
-
-![image](./assets/restore-existing-objects.png)
-
-Example shown status code 409 - Conflict object. Configuration objects already exists in existing "mcn" namespace.
+backup-server$python3 f5xc-backup-restore.py -a restore -p /var/backup/f5xc-backup-20240221_070526/ -n mcn-sample
+/var/backup/f5xc-backup-20240221_070526//f5xc-backup-20240221_070950
+/var/backup/f5xc-backup-20240221_070526/
+==================================================================================================================================
+[STARTED]     Date: 2024-02-21 07:09:50 UTC      Tenant: f5-xctestdrive    TASK: RESTORE      Namespace: mcn-sample
+====================================================================================================================================
+[mcn-sample] Restoring Health Check object from file [ mcn-sample_healthcheck-mcn-sample-hc.json ] ..... DONE
+[mcn-sample] Restoring Origin Pool object from file [ mcn-sample_origin_pool-mcn-sample-originpool.json ] ..... DONE
+[mcn-sample] Restoring App Firewall object from file [ mcn-sample_app_fw-mcn-sample-appfw.json ] ..... DONE
+[mcn-sample] Restoring HTTP LoadBalancer object from file [ mcn-sample_http_lb-mcn-sample-lb.json ] ..... DONE
+[mcn-sample] Restoring Malicious User Policy object from file [ mcn-sample_malicioususer_policy-mcn-sample-maluser-policy.json ] ..... DONE
+================================================================================================================
+[COMPLETED]   Date: 2024-02-21 07:10:20 UTC     Tenant: f5-xctestdrive
+================================================================================================================
+```
