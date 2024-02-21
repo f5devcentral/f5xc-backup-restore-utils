@@ -1,0 +1,8 @@
+security:
+  - "code scanning alert"
+enhancement:
+  - "add|refactor|create"
+bug:
+  - "fix"
+dependencies:
+  - "Renovate"
