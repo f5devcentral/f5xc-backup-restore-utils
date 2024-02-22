@@ -10,6 +10,13 @@
 
 This repository contains tools designed to help network operations staff save and restore the configuration from their F5 Distributed Cloud tenant. These tools are scripts to be run on a Linux server to create a backup file of the configuration settings (backup function) or to apply those settings to a system (restore function).
 
+### Contents
+
+[Prerequisites](#prerequisites)
+[Installation](#installation)
+[Usage](#usage)
+[Example Output](#output)
+
 > [!IMPORTANT]
 > The following configuration objects are supported for backup and restore functions only:
 
@@ -32,7 +39,7 @@ This repository contains tools designed to help network operations staff save an
 > - Certificate Management Chain
 > - Service Discovery
 
-### Prerequisites
+### Prerequisites (#prerequisites)
 
 Before using these tools, you need to have the following:
 
@@ -41,23 +48,21 @@ Before using these tools, you need to have the following:
 - **F5XC API Token**: This is a special code that allows the script to access and modify your network settings. You can obtain an API Token by following the instructions provided in the F5 documentation [here](https://docs.cloud.f5.com/docs/how-to/user-mgmt/credentials).
 - **Namespace**: Before running the restore function, make sure the namespace (a specific area within your tenant where settings are applied) exists.
 
-### Installation
+### Installation (#installation)
 
 Refer to [INSTALL.md](/INSTALL.md) for installation instructions.
 
-### Usage
+### Usage (#usage)
 
 Refer to [USAGE.md](/USAGE.md) for usage instructions.
 
-### Example Output
+### Example Output (#output)
 
 The following is an example of output from a backup:
 
 ```bash
 
 backup-server$python3 f5xc-backup-restore.py -a backup -p /var/backup -n mcn-sample
-/var/backup/f5xc-backup-20240221_070526
-/var/backup
 
 ======================================================================================================================
 [STARTED]     Date: 2024-02-21 07:05:26 UTC     Tenant: f5-xctestdrive     TASK: BACKUP       Namespace: mcn-sample
@@ -73,13 +78,12 @@ backup-server$python3 f5xc-backup-restore.py -a backup -p /var/backup -n mcn-sam
 
 ```
 
-The following is an exmaple of output from a restore:
+The following is an example of output from a restore:
 
 ```bash
 
 backup-server$python3 f5xc-backup-restore.py -a restore -p /var/backup/f5xc-backup-20240221_070526/ -n mcn-sample
-/var/backup/f5xc-backup-20240221_070526//f5xc-backup-20240221_070950
-/var/backup/f5xc-backup-20240221_070526/
+
 ==================================================================================================================================
 [STARTED]     Date: 2024-02-21 07:09:50 UTC      Tenant: f5-xctestdrive    TASK: RESTORE      Namespace: mcn-sample
 ====================================================================================================================================
