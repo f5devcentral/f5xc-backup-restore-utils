@@ -1,19 +1,36 @@
 # F5 Distributed Cloud Backup/Restore Operations
 
-![License](https://img.shields.io/github/license/f5-devcentral/f5xc-backup-restore-utils)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![GitHub branch checks state](https://img.shields.io/github/checks-status/f5-devcentral/f5xc-backup-restore-utils/master?label=build%20checks)](https://github.com/f5-devcentral/f5xc-backup-restore-utils/actions)
-[![GitHub deploy checks state](https://img.shields.io/github/checks-status/f5-devcentral/f5xc-backup-restore-utils/deploy?label=deploy%20checks)](https://github.com/f5-devcentral/f5xc-backup-restore-utils/actions)
+[![GitHub branch checks state](https://img.shields.io/github/checks-status/f5-devcentral/f5xc-backup-restore-utils/main?label=build%20checks)](https://github.com/f5-devcentral/f5xc-backup-restore-utils/actions)
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/f5-devcentral/f5xc-backup-restore-utils)](https://github.com/f5-devcentral/f5xc-backup-restore-utils/pulse/monthly)
 
 [![powered by semgrep](https://img.shields.io/badge/powered%20by-semgrep-1B2F3D?labelColor=lightgrey&link=https://semgrep.live/&style=flat-square&logo=data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAA0AAAAOCAYAAAD0f5bSAAAABmJLR0QA/gD+AP+cH+QUAAAACXBIWXMAAA3XAAAN1wFCKJt4AAAAB3RJTUUH5AYMEy0l8dkqrQAAAvFJREFUKBUB5gIZ/QEAAP8BAAAAAAMG6AD9+hn/GzA//wD//wAAAAD+AAAAAgABAQDl0MEBAwbmAf36GQAAAAAAAQEC9QH//gv/Gi1GFQEC+OoAAAAAAAAAAAABAQAA//8AAAAAAAAAAAD//ggX5tO66gID9AEBFSRxAgYLzRQAAADpAAAAAP7+/gDl0cMPAAAA+wAAAPkbLz39AgICAAAAAAAAAAAs+vU12AEbLz4bAAAA5P8AAAAA//4A5NDDEwEBAO///wABAQEAAP//ABwcMD7hAQEBAAAAAAAAAAAaAgAAAOAAAAAAAQEBAOXRwxUAAADw//8AAgAAAAD//wAAAAAA5OXRwhcAAQEAAAAAAAAAAOICAAAABP3+/gDjzsAT//8A7gAAAAEAAAD+AAAA/wAAAAAAAAAA//8A7ePOwA/+/v4AAAAABAIAAAAAAAAAAAAAAO8AAAABAAAAAAAAAAIAAAABAAAAAAAAAAgAAAD/AAAA8wAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA8AAAAEAAAA/gAAAP8AAAADAAAA/gAAAP8AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA7wAAAPsAAAARAAAABAAAAP4AAAAAAAAAAgAAABYAAAAAAAAAAAIAAAD8AwICAB0yQP78/v4GAAAA/wAAAPAAAAD9AAAA/wAAAPr9//8aHTJA6AICAgAAAAD8AgAAADIAAAAAAP//AB4wPvgAAAARAQEA/gEBAP4BAQABAAAAGB0vPeIA//8AAAAAAAAAABAC+vUz1QAAAA8AAAAAAwMDABwwPu3//wAe//8AAv//ABAcMD7lAwMDAAAAAAAAAAAG+vU0+QEBAvUB//4L/xotRhUBAvjqAAAAAAAAAAAAAQEAAP//AAAAAAAAAAAA//4IF+bTuuoCA/QBAQAA/wEAAAAAAwboAP36Gf8bMD//AP//AAAAAP4AAAACAAEBAOXQwQEDBuYB/foZAAAAAAD4I6qbK3+1zQAAAABJRU5ErkJggg==)](https://github.com/f5-devcentral/f5xc-backup-restore-utils/actions/workflows/secops-code-scan.yml)
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/f5-devcentral/f5xc-backup-restore-utils/master.svg)](https://results.pre-commit.ci/latest/github/f5-devcentral/f5xc-backup-restore-utils/master)
-[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/f5-devcentral/f5xc-backup-restore-utils/badge)](https://api.securityscorecards.dev/projects/github.com/f5-devcentral/f5xc-backup-restore-utils)
-[![OpenSSF Best Practices](https://bestpractices.coreinfrastructure.org/projects/7409/badge)](https://bestpractices.coreinfrastructure.org/projects/7409)
 
 ### Introduction
 
 This repository contains tools designed to help network operations staff save and restore the configuration from their F5 Distributed Cloud tenant. These tools are scripts to be run on a Linux server to create a backup file of the configuration settings (backup function) or to apply those settings to a system (restore function).
+
+> [!IMPORTANT]
+> The following configuration objects are supported for backup and restore functions only:
+
+> - HTTP Load Balancer
+> - TCP Load Balancer
+> - Origin Servers and Pools
+> - Health Check
+> - App Firewalls with it WAF exclusion policy
+> - API Definition
+> - Service Policy
+> - Rate Limiter Policy
+> - Malicious User Policy
+> - User Identification Policy
+> - IP Prefix Set
+> - Forward Proxy Policy
+> - Alert Policy
+> - Alert Receiver
+> - Global Log Receiver
+> - Certificate Management
+> - Certificate Management Chain
+> - Service Discovery
 
 ### Prerequisites
 
@@ -31,28 +48,6 @@ Refer to [INSTALL.md](/INSTALL.md) for installation instructions.
 ### Usage
 
 Refer to [USAGE.md](/USAGE.md) for usage instructions.
-
-> [!IMPORTANT]
-> The following configuration objects are supported for backup and restore functions only:
-
-- HTTP Load Balancer
-  - TCP Load Balancer
-  - Origin Servers and Pools
-  - Health Check
-  - App Firewalls with it WAF exclusion policy
-  - API Definition
-  - Service Policy
-  - Rate Limiter Policy
-  - Malicious User Policy
-  - User Identification Policy
-  - IP Prefix Set
-  - Forward Proxy Policy
-  - Alert Policy
-  - Alert Receiver
-  - Global Log Receiver
-  - Certificate Management
-  - Certificate Management Chain
-  - Service Discovery
 
 ### Example Output
 

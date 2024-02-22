@@ -11,18 +11,26 @@ export XC_TENANT='f5-xctestdrive'
 
 ```
 
+> [!NOTE]
+> It's important to note that in order to perform backups or restores, your API Key needs to have the right level of permission to access and change the configuration settings.
+
 ### Running the Script
 
-To run the backup or restore functions, you will use the script files named `backup.py` and `restore.py`. These are the tools that perform the saving and applying of your network configurations.
+Command line options for the scripts can be found as follows:
 
-### Example Outputs
+```bash
 
-The script will provide outputs that indicate the success or failure of the backup and restore operations. Unfortunately, due to a retrieval error, we cannot show the exact example outputs from the script. However, typically, a successful backup will indicate that the settings have been saved into a file, and a successful restore will confirm that the settings have been applied to the network.
+backup-server$python3 /f5xc-backup-restore.py -h
+usage: f5xc-backup-restore.py [-h] --action ACTION --path PATH --namespace NAMESPACE [--version]
 
-### Permissions
+F5XC Backup/Restore Utility Usage
 
-It's important to note that in order to perform backups or restores, your API Key needs to have the right level of permission to access and change the network settings. This is like having the correct security clearance to make changes in a secure system[1].
-
-### Conclusion
-
-By following the above steps and ensuring you have the correct prerequisites, you can use the F5XC Backup/Restore Utilities to manage your network configurations effectively. Remember to consult the F5 documentation for detailed instructions on obtaining an API Token and for any additional support you may need.
+options:
+  -h, --help            show this help message and exit
+  --action ACTION, -a ACTION
+                        Desire Action - backup / restore
+  --path PATH, -p PATH  Path to create backups in / restore backups from
+  --namespace NAMESPACE, -n NAMESPACE
+                        Namespace - comma deliminated
+  --version             show program's version number and exit
+```
