@@ -15,7 +15,7 @@ This repository contains tools designed to help network operations staff save an
 [Prerequisites](#prerequisites)
 [Installation](#installation)
 [Usage](#usage)
-[Example Output](#output)
+[Example Output](#example-output)
 
 > [!IMPORTANT]
 > The following configuration objects are supported for backup and restore functions only:
@@ -39,7 +39,7 @@ This repository contains tools designed to help network operations staff save an
 > - Certificate Management Chain
 > - Service Discovery
 
-### Prerequisites (#prerequisites)
+### Prerequisites
 
 Before using these tools, you need to have the following:
 
@@ -48,15 +48,15 @@ Before using these tools, you need to have the following:
 - **F5XC API Token**: This is a special code that allows the script to access and modify your network settings. You can obtain an API Token by following the instructions provided in the F5 documentation [here](https://docs.cloud.f5.com/docs/how-to/user-mgmt/credentials).
 - **Namespace**: Before running the restore function, make sure the namespace (a specific area within your tenant where settings are applied) exists.
 
-### Installation (#installation)
+### Installation
 
 Refer to [INSTALL.md](/INSTALL.md) for installation instructions.
 
-### Usage (#usage)
+### Usage
 
 Refer to [USAGE.md](/USAGE.md) for usage instructions.
 
-### Example Output (#output)
+### Example Output
 
 The following is an example of output from a backup:
 
