@@ -18,13 +18,14 @@
 # 
 import argparse
 import requests
-import json
-import base64
+# import json
+# import base64
 import warnings
 import sys
 import os
 import time
 import re
+import configparser
 
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -450,11 +451,17 @@ def restore_useridentification_policy (log_path,restore_path,ns,wait_time):
 tenant_name = 'XXXXXXXXXXXXXXXXX' # Update with your tenant name - e.g. f5-apac-sp
 tenant_url = 'https://' + tenant_name + '.console.ves.volterra.io'
 api_token = 'xxxxxxxxxxxxxxxxx' # Update with your API token. Refer to documentation to generate API Token.
-version = '1.4' # Updated to version 1.4, additional logging capabilities.
+version = '1.5' # Updated to version 1.5, changed from using environment variables to reading from a config file
 
 try:
-    api_token = os.environ.get("XC_API_TOKEN")
-    tenant_name = os.environ.get("XC_TENANT")
+    # api_token = os.environ.get("XC_API_TOKEN")
+    # tenant_name = os.environ.get("XC_TENANT")
+    config = configparser.ConfigParser()
+    home_dir = os.path.expanduser("~")
+    configFile  = home_dir + "/.f5xc/config.ini"
+    config.read(configFile)
+    tenant_name = config['DEFAULT']['tenant']
+    api_token = config['DEFAULT']['token']
 
     tenant_url = 'https://' + tenant_name + '.console.ves.volterra.io'
     headers = {
@@ -569,7 +576,7 @@ try:
     print(f'\033[0;35m ================================================================================================================\n' )
 
 except KeyError:
-    print( "Please set the environment variables XC_API_TOKEN and XC_TENANT" )
+    print( "Error reading from config.ini, please sure that config.ini exists in $HOME/.f5xc" )
     sys.exit(1)
 
 """
