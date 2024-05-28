@@ -1,4 +1,4 @@
-# F5 Distributed Cloud Backup/Restore Operations
+# F5 Distributed Cloud Backup and Restore Operations
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![GitHub branch checks state](https://img.shields.io/github/checks-status/f5devcentral/f5xc-backup-restore-utils/main?label=build%20checks)](https://github.com/f5devcentral/f5xc-backup-restore-utils/actions)
@@ -18,7 +18,7 @@ This repository contains tools designed to help network operations staff save an
 [Example Output](#example-output)
 
 > [!IMPORTANT]
-> The following configuration objects from F5 Distributed Cloud are supported for backup and restore functions only:
+> The script in this repository will support the following configuration objects from F5 Distributed Cloud for backup and restore functions:
 >
 > - HTTP Load Balancer
 > - TCP Load Balancer
@@ -44,9 +44,9 @@ This repository contains tools designed to help network operations staff save an
 Before using these tools, you need to have the following:
 
 - **Python 3.x**: This is the programming language in which the script is written. You need to have it installed on your system to run the script.
-- **F5 Distributed Cloud Tenant URL**: This is the web address of your specific network management area.
-- **F5 Distributed Cloud API Token**: This is a special code that allows the script to access and modify your network settings. You can obtain an API Token by following the instructions provided in the F5 documentation [here](https://docs.cloud.f5.com/docs/how-to/user-mgmt/credentials).
-- **F5 Distributed Cloud Namespace**: Before running the restore function, make sure the namespace (a specific area within your tenant where settings are applied) exists.
+- **F5 Distributed Cloud Tenant URL**: This is the web address of your specific F5 Distributed Cloud tenant.
+- **F5 Distributed Cloud API Token**: This is a credential that allows the script to modify settings inside your F5 Distributed Cloud tenant. You can obtain an API Token by following the instructions provided in the F5 documentation [here](https://docs.cloud.f5.com/docs/how-to/user-mgmt/credentials).
+- **F5 Distributed Cloud Namespace**: Before running any restore operations with the script, make sure the namespace (a specific area within your tenant where settings are applied) exists.
 
 ## Installation
 
@@ -61,11 +61,10 @@ Refer to [USAGE.md](/USAGE.md) for usage instructions.
 The following is an example of output from a backup:
 
 ```bash
-
 $ python3 f5xc-backup-restore.py -a backup -p /var/backup -n mcn-sample
 
 ======================================================================================================================
-[STARTED]     Date: 2024-02-21 07:05:26 UTC     Tenant: f5-xctestdrive     TASK: BACKUP       Namespace: mcn-sample
+[STARTED]     Date: 2024-02-21 07:05:26 UTC     Tenant: f5xc-testdrive     TASK: BACKUP       Namespace: mcn-sample
 ======================================================================================================================
 [mcn-sample] Backing up HTTP Loadbalancer object [mcn-sample-lb] ..... DONE
 [mcn-sample] Backing up Origin Pool object [mcn-sample-originpool] ..... DONE
@@ -73,19 +72,17 @@ $ python3 f5xc-backup-restore.py -a backup -p /var/backup -n mcn-sample
 [mcn-sample] Backing up App Firewall object [mcn-sample-appfw] ..... DONE
 [mcn-sample] Backing up Malicious User Mitigation object [mcn-sample-maluser-policy] ..... DONE
 ================================================================================================================
-[COMPLETED]   Date: 2024-02-21 07:05:58 UTC     Tenant: f5-xctestdrive
+[COMPLETED]   Date: 2024-02-21 07:05:58 UTC     Tenant: f5xc-testdrive
 ================================================================================================================
-
 ```
 
 The following is an example of output from a restore:
 
 ```bash
-
 $ python3 f5xc-backup-restore.py -a restore -p /var/backup/f5xc-backup-20240221_070526/ -n mcn-sample
 
 ==================================================================================================================================
-[STARTED]     Date: 2024-02-21 07:09:50 UTC      Tenant: f5-xctestdrive    TASK: RESTORE      Namespace: mcn-sample
+[STARTED]     Date: 2024-02-21 07:09:50 UTC      Tenant: f5xc-testdrive    TASK: RESTORE      Namespace: mcn-sample
 ====================================================================================================================================
 [mcn-sample] Restoring Health Check object from file [ mcn-sample_healthcheck-mcn-sample-hc.json ] ..... DONE
 [mcn-sample] Restoring Origin Pool object from file [ mcn-sample_origin_pool-mcn-sample-originpool.json ] ..... DONE
@@ -93,6 +90,6 @@ $ python3 f5xc-backup-restore.py -a restore -p /var/backup/f5xc-backup-20240221_
 [mcn-sample] Restoring HTTP LoadBalancer object from file [ mcn-sample_http_lb-mcn-sample-lb.json ] ..... DONE
 [mcn-sample] Restoring Malicious User Policy object from file [ mcn-sample_malicioususer_policy-mcn-sample-maluser-policy.json ] ..... DONE
 ================================================================================================================
-[COMPLETED]   Date: 2024-02-21 07:10:20 UTC     Tenant: f5-xctestdrive
+[COMPLETED]   Date: 2024-02-21 07:10:20 UTC     Tenant: f5xc-testdrive
 ================================================================================================================
 ```
