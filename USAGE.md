@@ -2,13 +2,16 @@
 
 ### Configuration
 
-Before running the script, you must create environment variables with your F5XC Tenant URL and API Token.
+Before running the script, you must ensure you have your F5 Distributed Cloud tenant and API token store in the `config.ini` file in the `.f5xc` directory.
 
 ```bash
-
-export XC_API_TOKEN='XXXXXXXXX'
-export XC_TENANT='f5-xctestdrive'
-
+mkdir .f5xc
+cd .f5xc
+cat > config.ini<< EOF
+[DEFAULT]
+token=XXXXXXXX
+tenant=f5xc-testdrive
+EOF
 ```
 
 > [!NOTE]
