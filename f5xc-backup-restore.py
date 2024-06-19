@@ -28,7 +28,7 @@ import re
 import configparser
 
 from datetime import datetime
-from zoneinfo import ZoneInfo
+# from zoneinfo import ZoneInfo
 
 warnings.filterwarnings("ignore")
 
@@ -47,9 +47,11 @@ def get_and_save_conf_object(log_path, backup_path, ns, base_api, items_conf_obj
        api_req = base_api +'/' + item
        if item_ns == ns and not (item.startswith('nfv-mgt-ves-io-') or item.startswith('apm-nfv-mgt-op-ves-io-') or item.startswith('ves-io-')):
            payload = ""
-           backup_start_utc_now = datetime.now(tz=ZoneInfo("Etc/UTC"))
+           # backup_start_utc_now = datetime.now(tz=ZoneInfo("Etc/UTC"))
+           backup_start_utc_now = datetime.utcnow()
            response = requests.request("GET", api_req, headers=headers, verify=False)
-           backup_end_utc_now = datetime.now(tz=ZoneInfo("Etc/UTC"))
+           # backup_end_utc_now = datetime.now(tz=ZoneInfo("Etc/UTC"))
+           backup_end_utc_now = datetime.utcnow()
            if response.status_code == 200:
                 # item_file = './' + ns + '/' + ns + '_' + file_format + '-' + item + '.json'
                 # item_file = final_backup_path + ns + '/' + ns + '_' + file_format + '-' + item + '.json'
@@ -313,9 +315,11 @@ def post_and_write_conf_object(log_path, restore_path,ns, api_url, filename_pref
                 with open(os.path.join(final_restore_path, file_name), 'r') as file:
                     post_data = file.read()
                     item_file = final_restore_path + '/' + file_name
-                    restore_start_utc_now = datetime.now(tz=ZoneInfo("Etc/UTC"))
+                    # restore_start_utc_now = datetime.now(tz=ZoneInfo("Etc/UTC"))
+                    restore_start_utc_now = datetime.utcnow()
                     response = requests.request("POST", api_url, headers=headers, data=post_data, verify=False)
-                    restore_end_utc_now = datetime.now(tz=ZoneInfo("Etc/UTC"))
+                    # restore_end_utc_now = datetime.now(tz=ZoneInfo("Etc/UTC"))
+                    restore_end_utc_now = datetime.utcnow()
                     if response.status_code == 200:
                         log_message = restore_start_utc_now.strftime('%Y-%m-%d UTC') + ',RESTORE,' + ns + ',' + object_type + ',' + restore_start_utc_now.strftime('%Y-%m-%d %H:%M:%S UTC') + ',' + restore_end_utc_now.strftime('%Y-%m-%d %H:%M:%S UTC') + ',' + "{:.2f}".format( (os.stat(item_file).st_size) / 1024 ) + ' KB,SUCCESS\n'
                         with open(log_file,'a',encoding='utf-8') as lf:
@@ -493,8 +497,8 @@ try:
     if not os.path.isdir(input_path) and os.path.isdir(log_path):
         raise Exception("Path is not a directory")
     else:
-        # utc_now = datetime.utcnow()
-        utc_now = datetime.now(tz=ZoneInfo("Etc/UTC"))
+        utc_now = datetime.utcnow()
+        # utc_now = datetime.now(tz=ZoneInfo("Etc/UTC"))
         formatted_utc_now = utc_now.strftime('%Y%m%d_%H%M%S')
         backup_path = input_path + '/f5xc-backup-' + formatted_utc_now
         restore_path = input_path
@@ -503,8 +507,8 @@ try:
     # print(restore_path)
     
     if args['action'] == 'backup':
-        # utc_now = datetime.utcnow()
-        utc_now = datetime.now(tz=ZoneInfo("Etc/UTC"))
+        utc_now = datetime.utcnow()
+        # utc_now = datetime.now(tz=ZoneInfo("Etc/UTC"))
         formatted_utc_now = utc_now.strftime('%Y-%m-%d %H:%M:%S UTC')
         print(f'\033[0;35m\n ======================================================================================================================' )
         print(f'\033[0;35m [STARTED]     Date: {formatted_utc_now}     Tenant: {tenant_name}     TASK: BACKUP       Namespace: {namespace}')
@@ -536,8 +540,8 @@ try:
             #backup_svc_discovery(log_path,backup_path,ns,backup_wait_time)
         
     elif args['action'] == 'restore':
-        # utc_now = datetime.utcnow()
-        utc_now = datetime.now(tz=ZoneInfo("Etc/UTC"))
+        utc_now = datetime.utcnow()
+        # utc_now = datetime.now(tz=ZoneInfo("Etc/UTC"))
         formatted_utc_now = utc_now.strftime('%Y-%m-%d %H:%M:%S UTC')
         print(f'\033[0;35m \n==================================================================================================================================' )
         print(f'\033[0;35m [STARTED]     Date: {formatted_utc_now}      Tenant: {tenant_name}    TASK: RESTORE      Namespace: {namespace}' )
@@ -568,8 +572,8 @@ try:
             #backup_report_conf(log_path,restore_path,ns,restore_wait_time) # Need reciever of report group created prior
             #backup_svc_discovery(log_path,restore_path,ns,restore_wait_time) # site must exist prior
         
-    # utc_now = datetime.utcnow()
-    utc_now = datetime.now(tz=ZoneInfo("Etc/UTC"))
+    utc_now = datetime.utcnow()
+    # utc_now = datetime.now(tz=ZoneInfo("Etc/UTC"))
     formatted_utc_now = utc_now.strftime('%Y-%m-%d %H:%M:%S UTC')
     print(f'\033[0;35m ================================================================================================================' )
     print(f'\033[0;35m [COMPLETED]   Date: {formatted_utc_now}     Tenant: {tenant_name}')
